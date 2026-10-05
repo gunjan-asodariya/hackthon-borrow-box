@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BorrowBox - Add New Product</title>
+  <style>
+    /* ==================================================
+   1. COLOR SYSTEM & CSS VARIABLES
+   ================================================== */
+:root {
+  --primary-green: #2E7D32;       /* Main header & button green */
+  --dark-green: #1B5E20;          /* Hover state dark green */
+  --light-green: #E8F5E9;         /* Active sidebar & card tint */
+  --accent-orange: #FF7043;       /* Save & Publish accent button color */
+  --background-color: #F4F6F8;    /* Overall app greyish background */
+  --card-background: #FFFFFF;     /* Pure white card backgrounds */
+  --text-dark: #212121;           /* Main headings & text */
+  --text-gray: #757575;           /* Subtitles & placeholders */
+  --border-color: #E0E0E0;        /* Subtle divider borders */
+  --accent-yellow: #FFF8E1;       /* Light promo box background */
+}
+
+/* ==================================================
+   2. GLOBAL BASE STYLES
+   ================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* ==================================================
+   3. HEADER STYLES
+   ================================================== */
+.header {
+  height: 64px;
+  background-color: var(--card-background);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo Area */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.logo-highlight {
+  color: var(--primary-green);
+}
+
+/* Header Search Bar */
+.header-search {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 14px;
+  width: 380px;
+}
+
+.search-icon {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+/* Profile Area */
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bell-icon {
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-role {
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+/* ==================================================
+   4. LAYOUT CONTAINER (SIDEBAR + MAIN)
+   ================================================== */
+.dashboard-container {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+/* ==================================================
+   5. SIDEBAR STYLES
+   ================================================== */
+.sidebar {
+  width: 220px;
+  background-color: var(--card-background);
+  border-right: 1px solid var(--border-color);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text-gray);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: var(--background-color);
+  color: var(--text-dark);
+}
+
+/* Active Nav Item Highlighting */
+.nav-item.active {
+  background-color: var(--primary-green);
+  color: #FFFFFF;
+}
+
+/* Promo Card inside Sidebar */
+.sidebar-promo {
+  background-color: var(--accent-yellow);
+  border: 1px solid #FFE082;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 24px;
+}
+
+.promo-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.promo-subtitle {
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+.promo-brand {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--primary-green);
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* ==================================================
+   6. MAIN CONTENT AREA STYLES
+   ================================================== */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  max-width: 1200px;
+}
+
+.page-title-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-top: 2px;
+}
+
+.back-link {
+  font-size: 13px;
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ==================================================
+   7. FORM LAYOUT & CARDS
+   ================================================== */
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Two-column layout grid for desktop */
+.form-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 850px) {
+  .product-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .form-footer-bar {
+    grid-column: 1 / -1;
+  }
+}
+
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-header-row .card-title {
+  margin-bottom: 0;
+}
+
+/* ==================================================
+   8. FORM INPUT ELEMENTS
+   ================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.margin-top-12 {
+  margin-top: 12px;
+}
+
+.form-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-gray);
+  letter-spacing: 0.5px;
+}
+
+.helper-tag {
+  font-weight: normal;
+  color: var(--text-gray);
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text-dark);
+  outline: none;
+  background-color: #FFFFFF;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--primary-green);
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.char-count {
+  font-size: 11px;
+  color: var(--text-gray);
+  text-align: right;
+  margin-top: 4px;
+}
+
+.helper-text {
+  font-size: 11px;
+  color: var(--text-gray);
+  margin-top: 4px;
+}
+
+/* Currency and Unit Inputs Wrapper */
+.currency-input-wrapper, .unit-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 12px;
+  font-weight: 600;
+  color: var(--text-gray);
+}
+
+.currency-input-wrapper .form-input {
+  padding-left: 28px;
+}
+
+.unit-tag {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  color: var(--text-gray);
+  pointer-events: none;
+}
+
+/* ==================================================
+   9. PRODUCT IMAGE UPLOAD AREA
+   ================================================== */
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.image-preview-area {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.main-image-placeholder {
+  width: 140px;
+  height: 140px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shoes-emoji {
+  font-size: 50px;
+}
+
+.thumbnail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thumbnail {
+  width: 40px;
+  height: 40px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.active-thumb {
+  border-color: var(--primary-green);
+  background-color: var(--light-green);
+}
+
+.upload-dropzone {
+  border: 2px dashed var(--border-color);
+  background-color: #FAFAFA;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.upload-main-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.upload-sub-text {
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+/* Share Button */
+.btn-share {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text-gray);
+  cursor: pointer;
+}
+
+/* ==================================================
+   10. SAVE & PUBLISH FOOTER BAR
+   ================================================== */
+.form-footer-bar {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.footer-info-text {
+  font-size: 13px;
+  color: var(--text-gray);
+}
+
+.btn-publish {
+  background-color: var(--accent-orange);
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-publish:hover {
+  background-color: #E65100;
+}
+
+/* ==================================================
+   11. RESPONSIVE DESIGN (MOBILE & TABLETS)
+   ================================================== */
+@media (max-width: 768px) {
+  .header-search {
+    display: none; /* Hide search bar on small mobile screens */
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .nav-item {
+    white-space: nowrap;
+  }
+
+  .sidebar-promo {
+    display: none; /* Hide promotional card on mobile */
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-footer-bar {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .btn-publish {
+    width: 100%;
+  }
+}
+  </style>
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <!-- Brand Logo Area -->
+    <div class="header-logo">
+      <span class="logo-icon">📦</span>
+      <span class="logo-text">Borrow<span class="logo-highlight">Box</span></span>
+    </div>
+
+    <!-- Search Input Box -->
+    <div class="header-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search products, orders, or anything...." class="search-input">
+    </div>
+
+    <!-- Seller Profile Info -->
+    <div class="header-profile">
+      <span class="bell-icon">🔔</span>
+      <div class="profile-avatar">S</div>
+      <div class="profile-text">
+        <span class="profile-name">Seller</span>
+        <span class="profile-role">Shop Owner</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Layout Wrapper (Sidebar + Main Content Area) -->
+  <div class="dashboard-container">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item">
+          <span class="nav-icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item active">
+          <span class="nav-icon">➕</span> Add Product
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">📦</span> My Products
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">📋</span> Orders
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">📈</span> Analytics
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">💬</span> Messages
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">⚙️</span> Settings
+        </a>
+      </nav>
+
+      <!-- Sidebar Promo Card -->
+      <div class="sidebar-promo">
+        <div class="promo-title">🌱 Your Products</div>
+        <div class="promo-subtitle">Grow Together</div>
+        <div class="promo-brand">BorrowBox</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+
+      <!-- Page Title & Navigation Header -->
+      <div class="page-title-header">
+        <div>
+          <h1 class="page-title">Add New Product</h1>
+          <p class="page-subtitle">Fill in the details below to list your product on BorrowBox</p>
+        </div>
+        <a href="#" class="back-link">← Back to My Products</a>
+      </div>
+
+      <!-- Form Grid Container -->
+      <form class="product-form" onsubmit="event.preventDefault();">
+
+        <!-- Left Form Column -->
+        <div class="form-column">
+
+          <!-- Section 1: Product Image Upload -->
+          <div class="card">
+            <h2 class="card-title">1. Product Image</h2>
+            <div class="upload-container">
+              
+              <!-- Main Image Preview with Thumbnails -->
+              <div class="image-preview-area">
+                <div class="main-image-placeholder">
+                  <span class="shoes-emoji">👟</span>
+                </div>
+                <div class="thumbnail-list">
+                  <div class="thumbnail active-thumb">👟</div>
+                  <div class="thumbnail">👟</div>
+                  <div class="thumbnail">👟</div>
+                </div>
+              </div>
+
+              <!-- Upload Drag & Drop Box -->
+              <div class="upload-dropzone">
+                <span class="upload-icon">☁️</span>
+                <p class="upload-main-text">Click to upload or drag and drop</p>
+                <p class="upload-sub-text">Supports JPG, PNG (Max 5MB)</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Section 2: Product Details -->
+          <div class="card">
+            <h2 class="card-title">2. Product Details</h2>
+            
+            <div class="form-group">
+              <label class="form-label" for="product-name">PRODUCT NAME *</label>
+              <input type="text" id="product-name" class="form-input" value="Nike Air Zoom Running Shoes">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label class="form-label" for="category">CATEGORY *</label>
+                <select id="category" class="form-select">
+                  <option selected>Footwear</option>
+                  <option>Apparel</option>
+                  <option>Accessories</option>
+                  <option>Electronics</option>
+                </select>
+              </div>
+
+              <div class="form-group flex-1">
+                <label class="form-label" for="brand">BRAND *</label>
+                <input type="text" id="brand" class="form-input" value="Nike">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Form Column -->
+        <div class="form-column">
+
+          <!-- Section 3: Pricing -->
+          <div class="card">
+            <h2 class="card-title">3. Pricing</h2>
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label class="form-label" for="selling-price">SELLING PRICE *</label>
+                <div class="currency-input-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="text" id="selling-price" class="form-input" value="4,999">
+                </div>
+              </div>
+
+              <div class="form-group flex-1">
+                <label class="form-label" for="mrp">MRP * <span class="helper-tag">(Optional)</span></label>
+                <div class="currency-input-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="text" id="mrp" class="form-input" value="7,999">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Stock / Quantity -->
+          <div class="card">
+            <h2 class="card-title">4. Stock / Quantity</h2>
+            <div class="form-group">
+              <label class="form-label" for="quantity">AVAILABLE QUANTITY *</label>
+              <div class="unit-input-wrapper">
+                <input type="number" id="quantity" class="form-input" value="50">
+                <span class="unit-tag">pcs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Product Description -->
+          <div class="card">
+            <div class="card-header-row">
+              <h2 class="card-title">5. Product Description</h2>
+              <button type="button" class="btn-share">🔗 Share</button>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="description">DESCRIPTION *</label>
+              <textarea id="description" class="form-textarea" rows="5">Lightweight, stylish and perfect for everyday runs. The Nike Air Zoom running shoes offer superior comfort, breathability and long-lasting durability. Designed for performance and style, these shoes are ideal for both casual wear and intense workouts.</textarea>
+              <div class="char-count">186/500</div>
+            </div>
+          </div>
+
+          <!-- Section 6: Delivery / Shipping Details -->
+          <div class="card">
+            <h2 class="card-title">6. Delivery / Shipping Details</h2>
+            
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label class="form-label" for="shipping-type">SHIPPING TYPE *</label>
+                <select id="shipping-type" class="form-select">
+                  <option selected>Standard Shipping</option>
+                  <option>Express Shipping</option>
+                </select>
+              </div>
+
+              <div class="form-group flex-1">
+                <label class="form-label" for="delivery-time">DELIVERY TIME *</label>
+                <select id="delivery-time" class="form-select">
+                  <option selected>3-5 Business Days</option>
+                  <option>1-2 Business Days</option>
+                  <option>Same Day Delivery</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group margin-top-12">
+              <label class="form-label" for="shipping-charge">SHIPPING CHARGE *</label>
+              <div class="currency-input-wrapper">
+                <span class="currency-symbol">₹</span>
+                <input type="text" id="shipping-charge" class="form-input" value="0">
+              </div>
+              <span class="helper-text">(Free shipping or enter amount)</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Full-Width Save & Publish Section Footer -->
+        <div class="form-footer-bar">
+          <p class="footer-info-text">Your product will be visible to buyers once you click Save & Publish.</p>
+          <button type="submit" class="btn-publish">Save & Publish</button>
+        </div>
+
+      </form>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

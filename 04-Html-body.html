@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BorrowBox - Order #FM248731</title>
+  <style>
+    /* ==================================================
+   COLOR SYSTEM & CSS VARIABLES
+   ================================================== */
+html {
+  --primary-green: #059669;      /* Main forest green tone */
+  --dark-green: #065F46;         /* Dark green for headers and total prices */
+  --light-green-bg: #ECFDF5;    /* Soft tint background for status cards */
+  --border-green: #A7F3D0;      /* Light green border stroke */
+  --accent-yellow: #D97706;     /* Accent yellow tone for product details */
+  --bg-color: #F8FAF9;          /* Subtle warm off-white page background */
+  --card-bg: #FFFFFF;           /* White card element background */
+  --text-dark: #1F2937;         /* Deep dark text for standard headings */
+  --text-gray: #6B7280;         /* Gray body text */
+  --border-color: #E5E7EB;      /* Clean divider and card outline color */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* ==================================================
+   GLOBAL BASE STYLES
+   ================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  line-height: 1.5;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==================================================
+   REUSABLE CARD COMPONENT
+   ================================================== */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-heading {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-gray);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.divider {
+  border: none;
+  border-top: 1px dashed var(--border-color);
+  margin: 16px 0;
+}
+
+/* ==================================================
+   HEADER & LOGO
+   ================================================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-highlight {
+  color: var(--primary-green);
+}
+
+.logo-tagline {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--primary-green);
+  margin-top: 2px;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.order-id-tag {
+  font-size: 13px;
+}
+
+.header-label {
+  color: var(--text-gray);
+  margin-right: 6px;
+}
+
+.header-id {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-action {
+  background-color: #F3F4F6;
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.btn-help {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border-color: #FDE68A;
+}
+
+/* ==================================================
+   ORDER STATUS BANNER
+   ================================================== */
+.status-card {
+  background-color: var(--light-green-bg);
+  border: 1px solid var(--border-green);
+}
+
+.status-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.status-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-icon {
+  width: 28px;
+  height: 28px;
+  background-color: var(--primary-green);
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.status-title-group h2 {
+  font-size: 18px;
+  color: var(--dark-green);
+}
+
+.status-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge-success {
+  background-color: #D1FAE5;
+  color: var(--dark-green);
+}
+
+.badge-paid {
+  background-color: #DBEAFE;
+  color: #1E40AF;
+}
+
+.status-detail {
+  font-size: 14px;
+  color: var(--dark-green);
+  margin-left: 38px;
+}
+
+/* ==================================================
+   TOTAL PAID & REFERENCE HIGHLIGHTS
+   ================================================== */
+.summary-highlights {
+  display: flex;
+  gap: 16px;
+}
+
+.highlight-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.highlight-green {
+  background-color: var(--dark-green);
+  color: #FFFFFF;
+}
+
+.highlight-gray {
+  background-color: #F3F4F6;
+  color: var(--text-dark);
+}
+
+.highlight-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+.highlight-amount {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.highlight-value {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ==================================================
+   TWO COLUMN CONTENT GRID
+   ================================================== */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==================================================
+   PURCHASED ITEMS CARD
+   ================================================== */
+.product-row {
+  display: flex;
+  gap: 16px;
+}
+
+.product-image-box {
+  width: 90px;
+  height: 90px;
+  background-color: #FEF3C7;
+  border: 1px solid #FDE68A;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-placeholder {
+  font-size: 36px;
+}
+
+.product-tag {
+  position: absolute;
+  bottom: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  background-color: #FFFFFF;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--accent-yellow);
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark-green);
+}
+
+.product-qty {
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-bottom: 4px;
+}
+
+.product-subtext {
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.product-feature {
+  font-size: 12px;
+  color: var(--primary-green);
+  margin-top: 2px;
+}
+
+.product-action-row {
+  margin-top: 16px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+}
+
+.btn-primary {
+  background-color: var(--primary-green);
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==================================================
+   RECEIPT CARD
+   ================================================== */
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.receipt-logo-text {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.receipt-tagline {
+  display: block;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary-green);
+}
+
+.receipt-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.receipt-badge {
+  background-color: #F3F4F6;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.receipt-order-num {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.receipt-date {
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+.sub-heading {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.address-tag {
+  display: inline-block;
+  background-color: #E0E7FF;
+  color: #3730A3;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.recipient-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.address-text {
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.contact-info {
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.instructions-box {
+  margin-top: 16px;
+  background-color: #FFFBEB;
+  border: 1px solid #FDE68A;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.instructions-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #92400E;
+}
+
+.instructions-quote {
+  font-size: 13px;
+  color: #78350F;
+  font-style: italic;
+}
+
+/* ==================================================
+   PAYMENT BREAKDOWN
+   ================================================== */
+.payment-method-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.active-method {
+  background-color: var(--light-green-bg);
+  border-color: var(--border-green);
+}
+
+.payment-header-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.method-type {
+  background-color: #D1FAE5;
+  color: var(--dark-green);
+}
+
+.method-status {
+  background-color: #34D399;
+  color: #FFFFFF;
+}
+
+.payment-body-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-body-row h4 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.payment-body-row p {
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+.method-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark-green);
+}
+
+.transaction-ref {
+  font-size: 12px;
+  color: var(--dark-green);
+  margin-top: 8px;
+  border-top: 1px dashed var(--border-green);
+  padding-top: 8px;
+}
+
+.secondary-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.inactive-method {
+  background-color: #F9FAFB;
+}
+
+.inactive-badge {
+  background-color: #E5E7EB;
+  color: var(--text-gray);
+}
+
+/* ==================================================
+   ORDER SUMMARY
+   ================================================== */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.badge-free {
+  background-color: #D1FAE5;
+  color: var(--dark-green);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.code-tag {
+  background-color: #F3F4F6;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.price-discount {
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+.total-line {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.price-total {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dark-green);
+}
+
+.summary-footer-text {
+  font-size: 11px;
+  color: var(--text-gray);
+  text-align: center;
+}
+
+/* ==================================================
+   CARBON SAVED SUSTAINABILITY
+   ================================================== */
+.carbon-card {
+  background-color: #F0FDF4;
+  border-color: #BBF7D0;
+}
+
+.sustainability-heading {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--dark-green);
+  margin-bottom: 12px;
+}
+
+.metrics-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.metric-box {
+  flex: 1;
+  background-color: #FFFFFF;
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.metric-number {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-green);
+}
+
+.metric-label {
+  font-size: 10px;
+  color: var(--text-gray);
+}
+
+.sustainability-text {
+  font-size: 12px;
+  color: var(--dark-green);
+  line-height: 1.4;
+}
+
+/* ==================================================
+   COMMUNITY IMPACT BADGE
+   ================================================== */
+.impact-card {
+  background-color: var(--dark-green);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 16px;
+}
+
+.impact-title {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.impact-subtitle {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* ==================================================
+   ORDER FULFILLMENT TIMELINE
+   ================================================== */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  padding-left: 8px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+/* Vertical timeline connector bar */
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 20px;
+  bottom: -20px;
+  width: 2px;
+  background-color: var(--border-green);
+}
+
+.timeline-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--primary-green);
+  border: 3px solid #D1FAE5;
+  margin-top: 2px;
+  z-index: 1;
+}
+
+.timeline-time {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+.timeline-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.timeline-desc {
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+/* ==================================================
+   ORDER OPTIONS LINKS
+   ================================================== */
+.options-heading {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-gray);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.option-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #F9FAFB;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.arrow {
+  color: var(--primary-green);
+  font-weight: bold;
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+.footer {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.thank-you-msg {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark-green);
+}
+
+.footer-subtext {
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-bottom: 12px;
+}
+
+.token-box {
+  display: inline-block;
+  background-color: #F3F4F6;
+  border: 1px solid var(--border-color);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-gray);
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.footer-links a {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.dot {
+  color: var(--border-color);
+}
+
+/* ==================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE)
+   ================================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-actions {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .secondary-methods, .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-highlights {
+    flex-direction: column;
+  }
+}
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Outer Main Page Container -->
+  <main class="page-container">
+
+    <!-- Top Navigation Header -->
+    <header class="header">
+      <div class="logo-area">
+        <div class="logo-title">
+          <span class="logo-box-icon">📦</span>
+          <span class="logo-text">Borrow<span class="logo-highlight">Box</span></span>
+        </div>
+        <div class="logo-tagline">BORROW • SHARE • COMMUNITY</div>
+      </div>
+
+      <div class="header-actions">
+        <div class="order-id-tag">
+          <span class="header-label">Orders & Deliveries</span>
+          <span class="header-id">#FM248731</span>
+        </div>
+        <div class="action-buttons">
+          <button class="btn-action">🖨️ Print Receipt</button>
+          <button class="btn-action">📄 Download PDF</button>
+          <button class="btn-action">↗ Share</button>
+          <button class="btn-action btn-help">❓ Need Help?</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Order Status Banner -->
+    <section class="card status-card">
+      <div class="status-top-row">
+        <div class="status-title-group">
+          <span class="status-icon">✓</span>
+          <h2>Order Fulfilled & Delivered</h2>
+        </div>
+        <div class="status-badges">
+          <span class="badge badge-success">Delivered</span>
+          <span class="badge badge-paid">Paid</span>
+        </div>
+      </div>
+      <p class="status-detail">Confirmed delivery on 19 Sep 2025, 02:34 PM via FreshMart Express.</p>
+    </section>
+
+    <!-- Top Summary Highlights Row -->
+    <section class="summary-highlights">
+      <div class="card highlight-card highlight-green">
+        <span class="highlight-label">TOTAL PAID</span>
+        <div class="highlight-amount">₹449.00</div>
+      </div>
+      <div class="card highlight-card highlight-gray">
+        <span class="highlight-label">REFERENCE ID</span>
+        <div class="highlight-value">#FM248731</div>
+      </div>
+    </section>
+
+    <!-- Two Column Grid Area -->
+    <div class="content-grid">
+
+      <!-- Left Column: Items, Receipt & Payment -->
+      <div class="left-column">
+
+        <!-- Purchased Items Card -->
+        <section class="card purchased-items-card">
+          <h3 class="section-heading">PURCHASED ITEMS</h3>
+
+          <div class="product-row">
+            <div class="product-image-box">
+              <div class="product-placeholder">🌻</div>
+              <span class="product-tag">10 Stems</span>
+            </div>
+
+            <div class="product-details">
+              <div class="product-header">
+                <h4 class="product-title">Sunflower Bouquet</h4>
+                <span class="product-price">₹ 499.00</span>
+              </div>
+              <p class="product-qty">Qty: 1</p>
+              <p class="product-subtext">Fresh Flowers • 10 Stems Arrangement</p>
+              <p class="product-feature">10 Stems Guaranteed Freshness & Eco Packaging</p>
+            </div>
+          </div>
+
+          <div class="product-action-row">
+            <button class="btn-primary">Buy Bouquet Again</button>
+          </div>
+        </section>
+
+        <!-- Official Receipt Details Card -->
+        <section class="card receipt-card">
+          <div class="receipt-header">
+            <div class="receipt-logo">
+              <span class="receipt-logo-text">Borrow<span class="logo-highlight">Box</span></span>
+              <span class="receipt-tagline">BORROW • SHARE • BUILD COMMUNITY</span>
+            </div>
+            <div class="receipt-meta">
+              <span class="receipt-badge">RECEIPT</span>
+              <span class="receipt-order-num">Order #FM248731</span>
+              <span class="receipt-date">19 Sep 2025, 02:34 PM</span>
+            </div>
+          </div>
+
+          <hr class="divider">
+
+          <div class="receipt-body">
+            <div class="address-group">
+              <h4 class="sub-heading">Delivery Destination</h4>
+              <div class="address-tag">Home</div>
+              <p class="recipient-name">Aditi Sharma</p>
+              <p class="address-text">
+                Flat 402, Green Acres Residency,<br>
+                14th Main, Sector 4, HSR Layout,<br>
+                Bengaluru, Karnataka 560102
+              </p>
+              <p class="contact-info">📞 +91 98765 •••••</p>
+              <p class="contact-info">✉️ aditi.sharma***@email.com</p>
+            </div>
+
+            <div class="instructions-box">
+              <p class="instructions-title">Special instructions:</p>
+              <p class="instructions-quote">"Please leave with security if doorbell not answered. Keep in shade."</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Payment Breakdown Card -->
+        <section class="card payment-card">
+          <h3 class="section-heading">Payment Breakdown</h3>
+
+          <div class="payment-method-card active-method">
+            <div class="payment-header-row">
+              <span class="badge method-type">Primary</span>
+              <span class="badge method-status">Fully Settled</span>
+            </div>
+            <div class="payment-body-row">
+              <div class="method-info">
+                <h4>UPI Payment</h4>
+                <p>PhonePe, Google Pay, Paytm</p>
+              </div>
+              <div class="method-price">₹ 449.00</div>
+            </div>
+            <div class="transaction-ref">
+              UPI Transaction Ref: <strong>#TXN8829401</strong>
+            </div>
+          </div>
+
+          <div class="secondary-methods">
+            <div class="payment-method-card inactive-method">
+              <div class="payment-body-row">
+                <div>
+                  <h4>Card</h4>
+                  <p>Visa •••• 4821</p>
+                </div>
+                <span class="badge inactive-badge">Inactive</span>
+              </div>
+            </div>
+
+            <div class="payment-method-card inactive-method">
+              <div class="payment-body-row">
+                <div>
+                  <h4>Wallet</h4>
+                  <p>Paytm Wallet</p>
+                </div>
+                <span class="badge inactive-badge">Inactive</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right Column: Order Summary & Sustainability -->
+      <div class="right-column">
+
+        <!-- Order Summary Card -->
+        <section class="card order-summary-card">
+          <h3 class="section-heading">Order Summary</h3>
+
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span class="price">₹ 499.00</span>
+          </div>
+
+          <div class="summary-line">
+            <span>Shipping Charges <span class="badge-free">FREE</span></span>
+            <span class="price">₹ 0.00</span>
+          </div>
+
+          <div class="summary-line discount-line">
+            <span>Discount <strong class="code-tag">SAVE50</strong></span>
+            <span class="price-discount">- ₹ 50.00</span>
+          </div>
+
+          <hr class="divider">
+
+          <div class="summary-line total-line">
+            <span>Total Amount</span>
+            <span class="price-total">₹ 449.00</span>
+          </div>
+
+          <div class="summary-footer-text">
+            <p>Inclusive of all local goods & service taxes</p>
+            <p>Currency: <strong>INR (₹)</strong></p>
+          </div>
+        </section>
+
+        <!-- Carbon Saved Sustainability Banner -->
+        <section class="card carbon-card">
+          <h3 class="sustainability-heading">🌱 CARBON SAVED PACKAGING</h3>
+          
+          <div class="metrics-row">
+            <div class="metric-box">
+              <span class="metric-number">1.42 kg</span>
+              <span class="metric-label">Local sourcing</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-number">100%</span>
+              <span class="metric-label">Biodegradable kraft</span>
+            </div>
+          </div>
+
+          <p class="sustainability-text">
+            Every BorrowBox arrangement supports local florists and reusable delivery packaging cycles.
+          </p>
+        </section>
+
+        <!-- Community Impact Badge -->
+        <section class="card impact-card">
+          <h3 class="impact-title">BORROWBOX COMMUNITY IMPACT</h3>
+          <p class="impact-subtitle">Circular & Local Flower Economy</p>
+        </section>
+
+        <!-- Order Fulfillment Timeline -->
+        <section class="card timeline-card">
+          <h3 class="section-heading">ORDER FULFILLMENT TIMELINE</h3>
+
+          <div class="timeline">
+            
+            <div class="timeline-item completed">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-time">19 Sep, 02:34 PM</span>
+                <h4 class="timeline-title">Delivered directly to recipient</h4>
+                <p class="timeline-desc">Handed over safely at main door reception</p>
+              </div>
+            </div>
+
+            <div class="timeline-item completed">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-time">19 Sep, 01:10 PM</span>
+                <h4 class="timeline-title">Out for Delivery via FreshMart Rider</h4>
+                <p class="timeline-desc">Express delivery slot assigned</p>
+              </div>
+            </div>
+
+            <div class="timeline-item completed">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-time">19 Sep, 12:45 PM</span>
+                <h4 class="timeline-title">Order Placed & Payment Confirmed</h4>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Order Options Links Bar -->
+    <section class="card options-card">
+      <h3 class="options-heading">ORDER OPTIONS</h3>
+      <div class="options-grid">
+        <a href="#" class="option-item">
+          <span>Rate & Review Bouquet</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" class="option-item">
+          <span>Download GST Tax Invoice</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" class="option-item">
+          <span>Sunflower Care & Vase Guide</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" class="option-item">
+          <span>Report an Issue / Missing Item</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer class="footer">
+      <p class="thank-you-msg">Thank you for shopping with FreshMart!</p>
+      <p class="footer-subtext">We appreciate your trust and support in sustainable community commerce.</p>
+      
+      <div class="token-box">
+        BorrowBox FreshMart • Order Verification Token: <strong>FM-2025-0919-4821</strong>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Terms of Service</a>
+        <span class="dot">•</span>
+        <a href="#">Privacy Policy</a>
+        <span class="dot">•</span>
+        <a href="#">Help Center</a>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
