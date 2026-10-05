@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BorrowBox - Profile Page</title>
+  <style>
+    /* ==========================================
+   1. COLOR VARIABLES & ROOT SETUP
+   ========================================== */
+:root {
+  --primary-green: #059669;
+  --dark-green: #065F46;
+  --light-green: #ECFDF5;
+  --border-green: #A7F3D0;
+  --accent-yellow: #D97706;
+  --light-yellow: #FEF3C7;
+  --background: #F8FAF9;
+  --card-background: #FFFFFF;
+  --text-dark: #1F2937;
+  --text-gray: #6B7280;
+  --border-color: #E5E7EB;
+  --success: #10B981;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   2. BASE & RESET STYLES
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* Base Card Style */
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* ==========================================
+   3. HEADER
+   ========================================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--card-background);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.logo-green {
+  color: var(--primary-green);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 16px;
+  width: 380px;
+}
+
+.search-icon {
+  margin-right: 8px;
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-user-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.header-user-badge {
+  font-size: 11px;
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+/* ==========================================
+   4. LAYOUT (SIDEBAR & MAIN CONTENT)
+   ========================================== */
+.container {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  gap: 24px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text-gray);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.nav-item.active, .nav-item:hover {
+  background-color: var(--light-green);
+  color: var(--dark-green);
+}
+
+.badge-count {
+  background-color: var(--primary-green);
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+/* Sidebar Profile Card */
+.sidebar-profile-card {
+  text-align: center;
+}
+
+.sidebar-avatar {
+  width: 56px;
+  height: 56px;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto 12px;
+}
+
+.sidebar-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sidebar-bio {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin: 6px 0;
+}
+
+.sidebar-location {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.sidebar-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.tag-green { background-color: var(--light-green); color: var(--dark-green); }
+.tag-yellow { background-color: var(--light-yellow); color: #92400E; }
+.tag-blue { background-color: #DBEAFE; color: #1E40AF; }
+.tag-purple { background-color: #F3E8FF; color: #6B21A8; }
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================================
+   5. PROFILE HEADER
+   ========================================== */
+.profile-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-header-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-avatar-large {
+  width: 64px;
+  height: 64px;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.profile-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.verified-badge {
+  background-color: var(--light-green);
+  color: var(--dark-green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.level-badge {
+  background-color: #DBEAFE;
+  color: #1E40AF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.profile-subtitle {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin-top: 4px;
+}
+
+.escrow-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-top: 4px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ==========================================
+   6. BUTTONS
+   ========================================== */
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+.btn-outline {
+  background-color: white;
+  border-color: var(--border-color);
+  color: var(--text-dark);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+/* ==========================================
+   7. STATISTICS GRID
+   ========================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-gray);
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 4px 0;
+}
+
+.stat-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+.stat-footer {
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+.highlight-green {
+  background-color: var(--light-green);
+  border-color: var(--border-green);
+}
+
+/* ==========================================
+   8. TABS
+   ========================================== */
+.tab-container {
+  display: flex;
+  gap: 12px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-gray);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  color: var(--primary-green);
+  border-bottom: 3px solid var(--primary-green);
+}
+
+/* ==========================================
+   9. CONTENT SPLIT (2 COLUMNS)
+   ========================================== */
+.content-split {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+}
+
+.rentals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.section-desc {
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+.status-badge-green {
+  background-color: var(--light-green);
+  color: var(--dark-green);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Rental Cards */
+.rental-card {
+  display: flex;
+  gap: 16px;
+}
+
+.rental-image-box {
+  width: 120px;
+  height: 120px;
+  background-color: #F3F4F6;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.item-icon {
+  font-size: 36px;
+}
+
+.status-pill {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.tag-active { background-color: var(--light-green); color: var(--dark-green); }
+.tag-warning { background-color: var(--light-yellow); color: #92400E; }
+.tag-returned { background-color: #E5E7EB; color: var(--text-gray); }
+
+.id-tag {
+  position: absolute;
+  bottom: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  background-color: #374151;
+  color: white;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.rental-details {
+  flex: 1;
+}
+
+.category-title {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-gray);
+}
+
+.item-name {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.item-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark-green);
+}
+
+.info-block {
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.time-left {
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+.urgent-text {
+  color: var(--accent-yellow);
+  font-weight: 700;
+}
+
+.deposit-info {
+  color: var(--text-gray);
+}
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.review-quote {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--text-gray);
+  border-left: 2px solid var(--border-color);
+  padding-left: 8px;
+  margin: 6px 0;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stars {
+  color: var(--accent-yellow);
+  font-size: 12px;
+}
+
+/* ==========================================
+   10. SIDE PANELS
+   ========================================== */
+.side-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trust-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trust-banner {
+  background-color: var(--dark-green);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.trust-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.trust-subtitle {
+  font-size: 12px;
+}
+
+.panel-heading {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.verification-list {
+  list-style: none;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.check-icon {
+  color: var(--primary-green);
+  font-weight: bold;
+}
+
+.shield-box {
+  background-color: var(--light-green);
+  border: 1px solid var(--border-green);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.shield-title {
+  font-size: 12px;
+  color: var(--dark-green);
+}
+
+.shield-text {
+  font-size: 11px;
+  color: var(--dark-green);
+  margin-top: 2px;
+}
+
+/* Pledge Card */
+.pledge-list {
+  padding-left: 16px;
+  font-size: 12px;
+  color: var(--text-gray);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Reviews Panel */
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-yellow);
+}
+
+.review-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.review-date {
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+.review-tag {
+  font-size: 11px;
+  color: var(--text-gray);
+  margin-bottom: 2px;
+}
+
+.review-body {
+  font-size: 12px;
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+.review-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 10px 0;
+}
+
+.read-reviews-link {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-green);
+  text-decoration: none;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ==========================================
+   11. RESPONSIVE DESIGN (MOBILE & TABLET)
+   ========================================== */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content-split {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-header-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .search-box {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rental-card {
+    flex-direction: column;
+  }
+
+  .rental-image-box {
+    width: 100%;
+    height: 100px;
+  }
+}
+  </style>
+  <!-- Link external CSS stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- TOP HEADER / SEARCH NAVIGATION             -->
+  <!-- ========================================== -->
+  <header class="header">
+    <!-- BorrowBox Logo -->
+    <div class="logo-area">
+      <span class="logo-box-icon">📦</span>
+      <span class="logo-text">Borrow<span class="logo-green">Box</span></span>
+    </div>
+
+    <!-- Search Input Area -->
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search items, community members, rentals..." class="search-input">
+    </div>
+
+    <!-- User Profile Header Summary -->
+    <div class="header-user">
+      <span class="notification-icon">🔔</span>
+      <div class="header-avatar">RS</div>
+      <div class="header-user-info">
+        <span class="header-user-name">Rahul Sharma</span>
+        <span class="header-user-badge">Eco-Contributor Level 3</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN PAGE CONTAINER (SIDEBAR + MAIN CONTENT)-->
+  <!-- ========================================== -->
+  <div class="container">
+
+    <!-- LEFT SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <nav class="nav-menu">
+        <a href="#" class="nav-item"><span class="nav-icon">📊</span> Dashboard</a>
+        <a href="#" class="nav-item"><span class="nav-icon">🔍</span> Browse Items</a>
+        <!-- Active Tab Highlighted -->
+        <a href="#" class="nav-item active"><span class="nav-icon">👤</span> My Profile</a>
+        <a href="#" class="nav-item"><span class="nav-icon">📦</span> Borrowed Items</a>
+        <a href="#" class="nav-item"><span class="nav-icon">🏷️</span> My Listings / Lending</a>
+        <a href="#" class="nav-item"><span class="nav-icon">💬</span> Messages <span class="badge-count">2</span></a>
+        <a href="#" class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+      </nav>
+
+      <!-- Sidebar Profile Mini Card -->
+      <div class="card sidebar-profile-card">
+        <div class="sidebar-avatar">RS</div>
+        <h3 class="sidebar-name">Rahul Sharma</h3>
+        <p class="sidebar-bio">Tech enthusiast, weekend photographer & DIY hobbyist</p>
+        <p class="sidebar-location">📍 Bengaluru, India (Indiranagar)</p>
+        
+        <div class="sidebar-tags">
+          <span class="tag tag-green">⚡ Fast Responder (&lt;15 mins)</span>
+          <span class="tag tag-yellow">★ 4.95 Rating (48 reviews)</span>
+          <span class="tag tag-blue">✓ ID & Address Verified</span>
+          <span class="tag tag-purple">🏆 Top 5% Local Sharer</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT AREA -->
+    <main class="main-content">
+
+      <!-- 1. PROFILE HEADER CARD -->
+      <section class="card profile-header-card">
+        <div class="profile-header-main">
+          <div class="profile-avatar-large">RS</div>
+          <div class="profile-header-details">
+            <div class="profile-title-row">
+              <h2>Rahul Sharma</h2>
+              <span class="verified-badge">✓ Community Member • Verified Lender</span>
+              <span class="level-badge">Eco-Contributor Level 3</span>
+            </div>
+            <p class="profile-subtitle">Member since Mar 2023 • 4.95 Rating (48 reviews)</p>
+            <p class="escrow-text">🛡️ Security Deposit Guaranteed</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="profile-actions">
+          <button class="btn btn-outline">Share Profile</button>
+          <button class="btn btn-outline">Edit Profile</button>
+          <button class="btn btn-primary">Public View</button>
+        </div>
+      </section>
+
+      <!-- 2. STATISTICS CARDS GRID -->
+      <section class="stats-grid">
+        <div class="card stat-card">
+          <span class="stat-label">ITEMS BORROWED</span>
+          <div class="stat-value">14 <span class="stat-sub">2 active</span></div>
+          <span class="stat-footer">100% on-time return rate</span>
+        </div>
+
+        <div class="card stat-card">
+          <span class="stat-label">ITEMS LENT OUT</span>
+          <div class="stat-value">8 <span class="stat-sub">3 live</span></div>
+          <span class="stat-footer">26 total lending days</span>
+        </div>
+
+        <div class="card stat-card highlight-green">
+          <span class="stat-label">COMMUNITY SAVINGS</span>
+          <div class="stat-value">₹18,450</div>
+          <span class="stat-footer">Saved vs buying retail</span>
+        </div>
+
+        <div class="card stat-card highlight-green">
+          <span class="stat-label">CO₂ & WASTE OFFSET</span>
+          <div class="stat-value">42.5kg CO₂</div>
+          <span class="stat-footer">~3 new product cycles saved</span>
+        </div>
+      </section>
+
+      <!-- 3. RENTAL TABS -->
+      <div class="tab-container">
+        <button class="tab-button active">Currently Borrowed</button>
+        <button class="tab-button">Borrow History</button>
+        <button class="tab-button">My Listed Items</button>
+        <button class="tab-button">Reviews 48</button>
+      </div>
+
+      <!-- 4. SPLIT LAYOUT (RENTALS + SIDE PANELS) -->
+      <div class="content-split">
+
+        <!-- LEFT COLUMN: RENTAL CARDS -->
+        <div class="rentals-list">
+          <div class="section-header">
+            <div>
+              <h3>Currently Borrowed & Active Rentals</h3>
+              <p class="section-desc">Active rental contracts protected by BorrowBox community escrow</p>
+            </div>
+            <span class="status-badge-green">🛡️ Safe Handover Active</span>
+          </div>
+
+          <!-- Active Rental Card 1 -->
+          <div class="card rental-card">
+            <div class="rental-image-box">
+              <span class="status-pill tag-active">🟢 Active Rental</span>
+              <div class="item-icon">📷</div>
+              <span class="id-tag">ID: #BB 8921</span>
+            </div>
+
+            <div class="rental-details">
+              <span class="category-title">PHOTOGRAPHY & ELECTRONICS</span>
+              <h4 class="item-name">Canon EOS R5 Mirrorless & RF 24-70mm Lens</h4>
+              <p class="item-price">₹450 /day</p>
+
+              <div class="info-block">
+                <p><strong>Lender:</strong> Priya M. (500m away, Indiranagar) ★ 4.98</p>
+                <p><strong>Period:</strong> Oct 12 – Oct 20 • Handover complete: Oct 12, 10:30 AM</p>
+                <p class="time-left">⏳ Return in 3 days</p>
+                <p class="deposit-info"><strong>Deposit:</strong> ₹5,000 (BorrowBox Escrow Protected)</p>
+              </div>
+
+              <div class="card-buttons">
+                <button class="btn btn-outline btn-sm">View Handover Receipt</button>
+                <button class="btn btn-outline btn-sm">Message Priya</button>
+                <button class="btn btn-primary btn-sm">Request Extension</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Rental Card 2 -->
+          <div class="card rental-card">
+            <div class="rental-image-box">
+              <span class="status-pill tag-warning">⚠️ Due Tomorrow</span>
+              <div class="item-icon">🔌</div>
+              <span class="id-tag">ID: #BB 6430</span>
+            </div>
+
+            <div class="rental-details">
+              <span class="category-title">DIY TOOLS & HARDWARE</span>
+              <h4 class="item-name">Voltmaster 20V Brushless Cordless Drill Kit</h4>
+              <p class="item-price">₹120 /day</p>
+
+              <div class="info-block">
+                <p><strong>Lender:</strong> Amit Patel (HSR Layout, 3.2 km) ★ 4.90</p>
+                <p><strong>Period:</strong> Oct 14 – Oct 18 <span class="urgent-text">Due by 7:00 PM Tomorrow</span></p>
+                <p>Includes 2 batteries + 18 piece bit box</p>
+                <p class="deposit-info"><strong>Deposit:</strong> ₹1,000 (Refundable upon inspection)</p>
+              </div>
+
+              <div class="card-buttons">
+                <button class="btn btn-outline btn-sm">Contact Amit</button>
+                <button class="btn btn-primary btn-sm">Extend Period</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Listed Item / Review Card -->
+          <div class="card rental-card">
+            <div class="rental-image-box">
+              <span class="status-pill tag-returned">✓ Returned</span>
+              <div class="item-icon">👟</div>
+            </div>
+
+            <div class="rental-details">
+              <span class="category-title">FOOTWEAR & SPORTS</span>
+              <h4 class="item-name">Nike Air Zoom Pegasus 40 (Size UK 9)</h4>
+              <p class="info-text">Lent by Arjun Verma • 4 day marathon training trial</p>
+              <p class="deposit-info">Deposit Refunded (₹800)</p>
+              
+              <blockquote class="review-quote">
+                "Rahul returned the shoes spotless and exactly on schedule. Ideal community borrower!"
+              </blockquote>
+
+              <div class="review-footer">
+                <span class="stars">★★★★★</span>
+                <button class="btn btn-outline btn-sm">Borrow Again</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: VERIFICATION & PLEDGE PANELS -->
+        <div class="side-panels">
+
+          <!-- Community Trust Card -->
+          <div class="card trust-card">
+            <div class="trust-banner">
+              <span class="trust-title">COMMUNITY TRUST 98%</span>
+              <span class="trust-subtitle">Super Borrower & Lender</span>
+            </div>
+
+            <h4 class="panel-heading">Trust & Verification Level 4</h4>
+            <ul class="verification-list">
+              <li><span class="check-icon">✓</span> Government ID</li>
+              <li><span class="check-icon">✓</span> Phone & WhatsApp</li>
+              <li><span class="check-icon">✓</span> Work & Personal Email</li>
+              <li><span class="check-icon">✓</span> Physical Address (Indiranagar)</li>
+            </ul>
+
+            <!-- BorrowBox Deposit Shield -->
+            <div class="shield-box">
+              <h5 class="shield-title">🛡️ BorrowBox Deposit Shield</h5>
+              <p class="shield-text">Eligible for instant rentals with zero pre-approval delay up to ₹25,000 item valuation.</p>
+            </div>
+          </div>
+
+          <!-- Community Borrowing Pledge Card -->
+          <div class="card pledge-card">
+            <h4 class="panel-heading">Community Borrowing Pledge</h4>
+            <ul class="pledge-list">
+              <li>Return all tools and tech clean, dusted, and with rechargeable batteries fully charged.</li>
+              <li>Take quick handover photos in the app at both pickup and return for escrow protection.</li>
+              <li>Notify lender at least 12 hours in advance if requesting an extension.</li>
+              <li>Treat borrowed items better than your own; shared goods power zero-waste neighborhoods.</li>
+            </ul>
+          </div>
+
+          <!-- Lender Reviews Section -->
+          <div class="card reviews-card">
+            <div class="reviews-header">
+              <h4 class="panel-heading">Reviews from Lenders</h4>
+              <span class="rating-text">★ 4.95 / 5</span>
+            </div>
+
+            <!-- Review 1 -->
+            <div class="review-item">
+              <div class="review-top">
+                <strong>Naveen Krishnan</strong>
+                <span class="review-date">Oct 4, 2023</span>
+              </div>
+              <div class="stars">★★★★★</div>
+              <p class="review-tag">Lent: DeWalt Jigsaw Kit</p>
+              <p class="review-body">"Rahul kept in constant touch throughout the weekend project. Returned the blades in perfect shape with the original storage case. Highly recommend him!"</p>
+            </div>
+
+            <hr class="review-divider">
+
+            <!-- Review 2 -->
+            <div class="review-item">
+              <div class="review-top">
+                <strong>Meera Sen</strong>
+                <span class="review-date">Sep 28, 2023</span>
+              </div>
+              <div class="stars">★★★★★</div>
+              <p class="review-tag">Lent: 4 Person Camping Tent</p>
+              <p class="review-body">"Super careful handling of camping equipment. Even aired it dry before handing it back. A true gentleman neighbor!"</p>
+            </div>
+
+            <a href="#" class="read-reviews-link">Read all 48 Community Reviews →</a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
