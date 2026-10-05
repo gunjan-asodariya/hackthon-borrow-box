@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 Ford Bronco Badlands 4x4 Overland Rig & Towing Package - BorrowBox</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-teal: #14b8a6;
+            --primary-teal-dark: #0f766e;
+            --btn-teal: #22d3ee;
+            --btn-teal-hover: #06b6d4;
+            --light-teal-bg: #e6f4f1;
+            --dark-navy: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --bg-light: #f8fafc;
+            --badge-green-bg: #dcfce7;
+            --badge-green-text: #15803d;
+            --star-gold: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Header */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--primary-teal-dark);
+        }
+
+        .search-pill {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 14px;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-list-item {
+            background-color: #facc15;
+            color: #000;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Breadcrumbs & Title Block */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-muted);
+            padding: 12px 0 8px 0;
+        }
+
+        .breadcrumbs a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .product-meta-tags {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-green {
+            background-color: var(--badge-green-bg);
+            color: var(--badge-green-text);
+        }
+
+        .badge-outline {
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .product-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .product-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.25;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--text-main);
+        }
+
+        .action-buttons span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .host-sub-info {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        /* Photo Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr;
+            grid-template-rows: 150px 150px;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item {
+            position: relative;
+            background-color: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item-main {
+            grid-row: span 2;
+        }
+
+        .gallery-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.65);
+            color: #ffffff;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+
+        .btn-view-all {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Main Content Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 36px;
+        }
+
+        /* Host Profile Box */
+        .host-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .host-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: #38bdf8;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* Specs Bar Grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .spec-box {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .spec-box .label {
+            color: var(--text-muted);
+            font-size: 9px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .spec-box .value {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* Content Sections */
+        .section-title {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .description-text {
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        /* Included Items Grid */
+        .included-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .included-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .included-item i {
+            color: var(--primary-teal-dark);
+            margin-top: 2px;
+        }
+
+        /* Guarantee / Protection Banner */
+        .guarantee-banner {
+            background-color: var(--dark-navy);
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .guarantee-banner i {
+            font-size: 22px;
+            color: #38bdf8;
+        }
+
+        /* Map Box */
+        .map-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 28px;
+            background-color: #fafafa;
+        }
+
+        .map-visual {
+            height: 100px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .map-pin {
+            width: 26px;
+            height: 26px;
+            background-color: var(--primary-teal-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            border: 2px solid white;
+        }
+
+        /* Reviews Block */
+        .review-rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .rating-num {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .stars-row {
+            color: var(--star-gold);
+            font-size: 12px;
+        }
+
+        .rating-bars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+            margin-bottom: 20px;
+        }
+
+        .rating-bar-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+        }
+
+        .user-review {
+            border-top: 1px solid var(--border-color);
+            padding-top: 14px;
+            margin-top: 14px;
+        }
+
+        .user-review-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        /* Right Booking Widget Sidebar */
+        .booking-widget {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            background: #ffffff;
+            position: sticky;
+            top: 70px;
+        }
+
+        .widget-price-head {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .widget-price-head span {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .fulfillment-toggle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            background: var(--bg-light);
+            padding: 3px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .fulfillment-btn {
+            border: none;
+            background: transparent;
+            padding: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .fulfillment-btn.active {
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color: var(--primary-teal-dark);
+        }
+
+        .date-picker-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 14px;
+        }
+
+        .date-box {
+            font-size: 11px;
+        }
+
+        .date-box .lbl {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .checkbox-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 11px;
+        }
+
+        .checkbox-row input {
+            margin-top: 2px;
+        }
+
+        .pricing-summary {
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            font-size: 11px;
+        }
+
+        .price-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .price-line.total {
+            border-top: 1px solid var(--border-color);
+            padding-top: 8px;
+            margin-top: 8px;
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .btn-reserve {
+            width: 100%;
+            background-color: var(--btn-teal);
+            color: #042f2e;
+            border: none;
+            border-radius: 6px;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: background 0.2s;
+        }
+
+        .btn-reserve:hover {
+            background-color: var(--btn-teal-hover);
+        }
+
+        /* Similar Vehicles Section */
+        .similar-section {
+            margin-top: 48px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+        }
+
+        .similar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .item-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+        }
+
+        .item-card-content {
+            padding: 10px;
+        }
+
+        .item-card-title {
+            font-weight: 700;
+            font-size: 11px;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .item-card-price {
+            font-weight: 800;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            padding: 32px 0;
+            margin-top: 48px;
+            font-size: 11px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .footer-col h6 {
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 6px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="/ChatGPT.png" width="30px" height="30px"> BorrowBox
+            </div>
+            <div class="search-pill">
+                <i class="fa-solid fa-location-dot"></i> Marietta, GA
+                <span style="border-right: 1px solid #cbd5e1; height: 12px; margin: 0 4px;"></span>
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">How it Works</a></li>
+                <li><a href="#">Trust & Safety</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="#" class="btn-list-item">List Gear</a>
+                <i class="fa-regular fa-bell" style="font-size: 16px;"></i>
+                <i class="fa-regular fa-circle-user" style="font-size: 18px;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="#">Home</a> &gt; 
+            <a href="#">Vehicles & Towing</a> &gt; 
+            <a href="#">Overland Offroad Trucks</a> &gt; 
+            <span>2024 Ford Bronco Badlands 4x4 Overland Rig</span>
+        </div>
+
+        <!-- Product Header Meta -->
+        <div class="product-meta-tags">
+            <span style="font-size: 11px; font-weight: 700;"><i class="fa-solid fa-star" style="color: var(--star-gold);"></i> 4.99 • 18 reviews</span>
+            <span class="badge badge-green">SUPERHOST VERIFIED</span>
+            <span class="badge badge-outline">INSPECTED BEFORE DELIVERY</span>
+        </div>
+
+        <!-- Product Title & Share Actions -->
+        <div class="product-title-row">
+            <h1 class="product-title">2024 Ford Bronco Badlands 4x4 Overland Rig & Towing Package</h1>
+            <div class="action-buttons">
+                <span><i class="fa-solid fa-share-nodes"></i> Share</span>
+                <span><i class="fa-regular fa-heart"></i> Save</span>
+            </div>
+        </div>
+        <div class="host-sub-info">
+            <i class="fa-solid fa-location-dot"></i> East Cobb, Marietta, GA • 1.5 miles away • Instant Reservation
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item-main">
+                <span class="gallery-tag">OVERLAND ADVENTURE SUITE</span>
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&auto=format&fit=crop&q=80" alt="2024 Ford Bronco Badlands Overland Rig">
+                <div class="photo-caption">2024 Ford Bronco Badlands Overland Package • 2.7L Sasquatch • Heavy Duty Recovery Winch • 35" M/T Tires</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400&auto=format&fit=crop&q=80" alt="Bronco Cockpit & Instrument Panel">
+                <div class="photo-caption">12" Screen & GOAT Modes</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=400&auto=format&fit=crop&q=80" alt="Cargo Storage & ARB Fridge">
+                <div class="photo-caption">Cargo Storage & ARB Fridge</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=400&auto=format&fit=crop&q=80" alt="Trabuco Campsite Awning Setup">
+                <div class="photo-caption">Yokohama System & Awning</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&auto=format&fit=crop&q=80" alt="Tires and Suspension Detail">
+                <button class="btn-view-all"><i class="fa-solid fa-grid-2"></i> View All 18 Photos</button>
+            </div>
+        </div>
+
+        <!-- Main Content Layout -->
+        <div class="main-layout">
+            
+            <!-- Left Column -->
+            <div class="left-col">
+                
+                <!-- Host Card -->
+                <div class="host-card">
+                    <div class="host-profile">
+                        <div class="avatar">GV</div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 12px;">Hosted by Garrett & Elena Vance <span class="badge badge-green" style="font-size: 8px;">PREMIUM VEHICLE HOST</span></div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Hosting overland rigs since 2018 • 100% Response Rate • 150+ Trips Hosted • 5-Star Commercial Host Standard</div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;"><i class="fa-solid fa-shield"></i> Clean Vehicle Guarantee: Mechanically inspected and sanitized prior to every rental reservation.</div>
+                        </div>
+                    </div>
+                    <button style="border: 1px solid var(--border-color); background: #ffffff; border-radius: 6px; padding: 6px 10px; font-weight: 700; font-size: 10px;">Message Host</button>
+                </div>
+
+                <!-- Specifications Grid -->
+                <div class="specs-grid">
+                    <div class="spec-box">
+                        <div class="label">DRIVETRAIN / DRIVE</div>
+                        <div class="value">Sasquatch / Front-Rear Lockers</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="label">CARGO & TOWING</div>
+                        <div class="value">5 Seats / 52.3 cu ft Cargo</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="label">ENGINE / FUEL</div>
+                        <div class="value">2.7L EcoBoost / 18 MPG Avg</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="label">FULFILLMENT</div>
+                        <div class="value">Airport Delivery or Hub</div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div style="margin-bottom: 24px;">
+                    <h3 class="section-title">About this adventure vehicle</h3>
+                    <p class="description-text">
+                        Escape into the North Georgia Mountains, explore the Blue Ridge Parkway, or set out on a multi-state overland road trip with this fully equipped 2024 Ford Bronco Badlands 4x4 Overland Edition. Built for performance both on-highway and off-grid, this rig combines rugged capability with modern comfort and safety features.
+                    </p>
+                    <p class="description-text">
+                        Powered by the heavy-duty 2.7L EcoBoost V6 (330 HP / 415 lb-ft torque) paired to a 10-speed automatic transmission, outfitted with the Sasquatch Package (factory 35" mud-terrain tires, Bilstein position-sensitive dampers, electronic-locking front and rear axles), high-clearance fender flares, heavy-duty recovery gear, 12,000 lbs WARN winch, integrated Apple CarPlay/Android Auto, Bang & Olufsen 10-speaker sound, and a 3,500 lbs factory tow package.
+                    </p>
+                    <p class="description-text">
+                        Every vehicle is thoroughly mechanically inspected, sanitized, and fully fueled prior to pickup or delivery. Complete with off-road emergency recovery boards, an onboard 12V air compressor, and a heavy-duty integrated cargo slider for easy gear access. Perfect for outdoor enthusiasts, campers, and film crews.
+                    </p>
+                </div>
+
+                <!-- Included Items -->
+                <div style="margin-bottom: 24px;">
+                    <h3 class="section-title">Included with every Bronco adventure rental:</h3>
+                    <div class="included-grid">
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Full Comprehensive Rental Insurance</strong> (24/7 roadside assistance + comprehensive collision cover)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Yakima LockNLoad Rooftop Cargo Box</strong> (Weatherproof storage space for sleeping bags, tents & packs)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Domestic Dual-Zone 12V Cooler</strong> (Powered electric refrigerator running on vehicle battery)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Heavy Duty Recovery Package</strong> (Slickboards, tow straps, shackle mounts & WARN 12k lbs winch)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>12" SYNC 4 & 110V Inverter</strong> (Satellite Navigation, Apple CarPlay/Android Auto, AC Power Outlet)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Emergency Rescue Pack</strong> (First-aid kit, LED flood flashlight, jump starter pack & tire inflation system)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guarantee Banner -->
+                <div class="guarantee-banner">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div style="font-weight: 800; font-size: 13px;">BorrowBox $25,000 Vehicle & Equipment Protection Guarantee <span class="badge badge-green" style="font-size: 8px;">INCLUDED</span></div>
+                        <div style="font-size: 11px; opacity: 0.85;">Covers both commercial vehicle protection and onboard gear against damages or mechanical failure. 100% protection coverage verified by BorrowBox Guarantee Policy.</div>
+                    </div>
+                </div>
+
+                <!-- Pickup Hub & Delivery Radius -->
+                <div>
+                    <h3 class="section-title">Pickup Hub & Delivery Radius</h3>
+                    <div class="map-card">
+                        <div class="map-visual">
+                            <div class="map-pin"><i class="fa-solid fa-truck-monster"></i></div>
+                        </div>
+                        <div style="font-size: 11px;">
+                            <strong>Marietta Square & East Cobb Hub Delivery Zone</strong>
+                            <p style="color: var(--text-muted); font-size: 10px;">Contactless pickup hub location 3 minutes from I-75. Hartsfield-Jackson Atlanta Airport (ATL) terminal delivery available upon request.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ratings and Reviews -->
+                <div>
+                    <div class="review-rating-summary">
+                        <span class="rating-num">4.99</span>
+                        <div>
+                            <div class="stars-row"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Based on 18 verified overland & trip rentals</div>
+                        </div>
+                    </div>
+
+                    <div class="rating-bars-grid">
+                        <div class="rating-bar-line"><span>Vehicle Cleanliness</span> <strong>5.0</strong></div>
+                        <div class="rating-bar-line"><span>Mechanical Reliability</span> <strong>5.0</strong></div>
+                        <div class="rating-bar-line"><span>Host Support</span> <strong>5.0</strong></div>
+                        <div class="rating-bar-line"><span>Driving Comfort</span> <strong>4.9</strong></div>
+                    </div>
+
+                    <!-- Review 1 -->
+                    <div class="user-review">
+                        <div class="user-review-header">
+                            <div class="avatar" style="background-color: #10b981;">D</div>
+                            <div>
+                                <strong style="font-size: 11px;">David D.</strong>
+                                <span style="font-size: 10px; color: var(--text-muted);">• Verified Trip • 4-Day Road Trip</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 11px;">"Garrett's Bronco Badlands was the absolute best rig for our trip up to Blue Ridge. The Sasquatch package handles smooth on highways and seamlessly tackles dirt and gravel roads. The integrated fridge kept our gear cold the entire weekend. Will definitely rent again from Vance Fleet!"</p>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="user-review">
+                        <div class="user-review-header">
+                            <div class="avatar" style="background-color: #6366f1;">L</div>
+                            <div>
+                                <strong style="font-size: 11px;">Lauren M.</strong>
+                                <span style="font-size: 10px; color: var(--text-muted);">• Film Production Rental • September 2026</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 11px;">"Awesome vehicle! Seamless pickup, pristine condition, and all gear was meticulously organized. The roof box and pull-out rack made organizing our camera gear super convenient. Garrett met us on time for airport pickup. 10/10 experience, standard setting!"</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Sticky Booking Widget -->
+            <div class="right-col">
+                <div class="booking-widget">
+                    <div class="widget-price-head">
+                        $115.00 <span>/ day</span>
+                        <span style="float: right; font-size: 10px; background: #fef08a; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #854d0e;">Weekly Rate: $680/wk</span>
+                    </div>
+
+                    <div class="fulfillment-toggle">
+                        <button class="fulfillment-btn active">Local Hub Pickup (Free)</button>
+                        <button class="fulfillment-btn">Airport / Hotel Delivery (+$45)</button>
+                    </div>
+
+                    <div class="date-picker-grid">
+                        <div class="date-box">
+                            <div class="lbl">PICKUP DATE</div>
+                            <div><strong>06/12/2026</strong></div>
+                        </div>
+                        <div class="date-box" style="border-left: 1px solid var(--border-color); padding-left: 8px;">
+                            <div class="lbl">RETURN DATE</div>
+                            <div><strong>06/15/2026</strong></div>
+                        </div>
+                    </div>
+                    <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 12px; text-align: right;">
+                        <strong>3 Days (Weekend Loan)</strong> <a href="#" style="color: var(--primary-teal-dark);">Change</a>
+                    </div>
+
+                    <div style="font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">
+                        ADVENTURE ADD-ONS & GEAR
+                    </div>
+
+                    <div class="checkbox-options">
+                        <div class="checkbox-row">
+                            <input type="checkbox" checked id="roof-tent">
+                            <label for="roof-tent">
+                                <strong>Roost Explorer Hard-top Rooftop Tent</strong> +$25.00/day
+                                <div style="color: var(--text-muted); font-size: 9.5px;">Includes memory foam mattress and fold-down ladder access</div>
+                            </label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="kitchen-galley">
+                            <label for="kitchen-galley">
+                                <strong>Camp Kitchen & Camp Stove Combo</strong> +$12.00/day
+                                <div style="color: var(--text-muted); font-size: 9.5px;">Dual propane stove, cookware set & collapsible kitchen table unit</div>
+                            </label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="unlimited-miles">
+                            <label for="unlimited-miles">
+                                <strong>Unlimited Mileage Package</strong> +$20.00/day
+                                <div style="color: var(--text-muted); font-size: 9.5px;">Waives standard 200 miles/day limit for long-distance cross-country trips</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pricing-summary">
+                        <div class="price-line">
+                            <span>$115.00 x 3 Days</span>
+                            <span>$345.00</span>
+                        </div>
+                        <div class="price-line">
+                            <span>24/7 Roadside & Towing Insurance</span>
+                            <span>$18.00 Included</span>
+                        </div>
+                        <div class="price-line">
+                            <span>Preparation & Detailing Fee</span>
+                            <span>$12.00</span>
+                        </div>
+                        <div class="price-line">
+                            <span>BorrowBox Community Support Fee</span>
+                            <span>$12.50</span>
+                        </div>
+                        <div class="price-line total">
+                            <span>Estimated Total (USD)</span>
+                            <span>$369.50</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reserve"><i class="fa-solid fa-bolt"></i> Request Reservation</button>
+
+                    <div style="margin-top: 10px; font-size: 10px; color: var(--text-muted); text-align: center;">
+                        <div><i class="fa-solid fa-shield-halved"></i> Fully covered under BorrowBox Vehicle Insurance</div>
+                        <div><i class="fa-solid fa-rotate-left"></i> Free cancellation up to 72 hours before trip</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Similar Vehicles Nearby -->
+        <div class="similar-section">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="section-title">Similar adventure & utility vehicles nearby</h3>
+                <a href="#" style="font-size: 11px; font-weight: 700; color: var(--primary-teal-dark); text-decoration: none;">View all vehicles in Marietta &rarr;</a>
+            </div>
+
+            <div class="similar-grid">
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=300&auto=format&fit=crop&q=80" alt="Rivian R1T">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">Electric 4x4</div>
+                        <div class="item-card-title">Rivian R1T Quad-Motor Adventure</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">Smyrna • 3.2 miles away</div>
+                        <div class="item-card-price">$145 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=300&auto=format&fit=crop&q=80" alt="Toyota Tacoma TRD">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">Trail Rig</div>
+                        <div class="item-card-title">Toyota Tacoma TRD Pro Off-Road II</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">Downtown Marietta • 1.9 miles away</div>
+                        <div class="item-card-price">$95 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=300&auto=format&fit=crop&q=80" alt="Ram 1500 TRX">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">Heavy Duty</div>
+                        <div class="item-card-title">Ram 1500 Bighorn Cargo & Towing</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">East Cobb • 2.8 miles away</div>
+                        <div class="item-card-price">$80 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=300&auto=format&fit=crop&q=80" alt="Jeep Wrangler Rubicon">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">Adventure Rig</div>
+                        <div class="item-card-title">Jeep Wrangler Rubicon 4-Door 4xe</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">Kennesaw • 5.1 miles away</div>
+                        <div class="item-card-price">$105 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 8px;">
+                    <i class="fa-solid fa-box-archive"></i> BorrowBox
+                </div>
+                <p style="color: var(--text-muted);">A trusted peer-to-peer equipment loan network. Rent premium adventure vehicles, camera gear, and specialized tools directly from local verified hosts.</p>
+            </div>
+            <div class="footer-col">
+                <h6>NEIGHBORHOOD</h6>
+                <ul>
+                    <li><a href="#">Explore Equipment</a></li>
+                    <li><a href="#">Vehicle Fleet</a></li>
+                    <li><a href="#">Host Verification</a></li>
+                    <li><a href="#">Safety & Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h6>LENDERS & HOSTS</h6>
+                <ul>
+                    <li><a href="#">Post Your Vehicle</a></li>
+                    <li><a href="#">Company Guarantee</a></li>
+                    <li><a href="#">Lending Guidelines</a></li>
+                    <li><a href="#">Host Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h6>CONNECT & SUPPORT</h6>
+                <ul>
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                    <li><a href="#">Support Chat</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

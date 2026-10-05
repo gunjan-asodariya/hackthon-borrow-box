@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breville Barista Touch Impress & Artisan Culinary Appliance Suite - BorrowBox</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-teal: #14b8a6;
+            --primary-teal-dark: #0f766e;
+            --light-teal-bg: #e6f4f1;
+            --accent-cyan: #22d3ee;
+            --dark-navy: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --bg-light: #f8fafc;
+            --badge-green-bg: #dcfce7;
+            --badge-green-text: #15803d;
+            --star-gold: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Header Navigation */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: #fff;
+        }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--primary-teal-dark);
+        }
+
+        .search-pill {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 14px;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style: none;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-list-item {
+            background-color: #facc15;
+            color: #000;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Breadcrumbs & Product Title */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-muted);
+            padding: 12px 0 8px 0;
+        }
+
+        .breadcrumbs a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .product-meta-tags {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-green {
+            background-color: var(--badge-green-bg);
+            color: var(--badge-green-text);
+        }
+
+        .badge-outline {
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .product-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .product-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--text-main);
+        }
+
+        .action-buttons span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .host-sub-info {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        /* Photo Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr;
+            grid-template-rows: 150px 150px;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item {
+            position: relative;
+            background-color: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item-main {
+            grid-row: span 2;
+        }
+
+        .gallery-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(15, 23, 42, 0.8);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+
+        .btn-view-all {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Content Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 36px;
+        }
+
+        /* Host Profile Box */
+        .host-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .host-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #38bdf8;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* Specifications Grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .spec-box {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .spec-box .label {
+            color: var(--text-muted);
+            font-size: 9px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .spec-box .value {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .description-text {
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        /* Included Items Grid */
+        .included-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .included-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .included-item i {
+            color: var(--primary-teal-dark);
+            margin-top: 2px;
+        }
+
+        /* Guarantee Banner */
+        .guarantee-banner {
+            background-color: var(--dark-navy);
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .guarantee-banner i {
+            font-size: 22px;
+            color: #38bdf8;
+        }
+
+        /* Map Box */
+        .map-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 28px;
+            background-color: #fafafa;
+        }
+
+        .map-visual {
+            height: 100px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .map-pin {
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary-teal-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            border: 2px solid white;
+        }
+
+        /* Reviews Block */
+        .review-rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .rating-num {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .stars-row {
+            color: var(--star-gold);
+            font-size: 12px;
+        }
+
+        .rating-bars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+            margin-bottom: 20px;
+        }
+
+        .rating-bar-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+        }
+
+        .user-review {
+            border-top: 1px solid var(--border-color);
+            padding-top: 14px;
+            margin-top: 14px;
+        }
+
+        .user-review-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        /* Right Booking Widget Sidebar */
+        .booking-widget {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            background: #fff;
+            position: sticky;
+            top: 20px;
+        }
+
+        .widget-price-head {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .widget-price-head span {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .fulfillment-toggle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            background: var(--bg-light);
+            padding: 3px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .fulfillment-btn {
+            border: none;
+            background: transparent;
+            padding: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .fulfillment-btn.active {
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color: var(--primary-teal-dark);
+        }
+
+        .date-picker-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 14px;
+        }
+
+        .date-box {
+            font-size: 11px;
+        }
+
+        .date-box .lbl {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .checkbox-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 11px;
+        }
+
+        .checkbox-row input {
+            margin-top: 2px;
+        }
+
+        .pricing-summary {
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            font-size: 11px;
+        }
+
+        .price-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .price-line.total {
+            border-top: 1px solid var(--border-color);
+            padding-top: 8px;
+            margin-top: 8px;
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .btn-reserve {
+            width: 100%;
+            background-color: #2dd4bf;
+            color: #042f2e;
+            border: none;
+            border-radius: 6px;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .btn-reserve:hover {
+            background-color: #14b8a6;
+        }
+
+        /* Similar Equipment Grid */
+        .similar-section {
+            margin-top: 48px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+        }
+
+        .similar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .item-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+        }
+
+        .item-card-content {
+            padding: 10px;
+        }
+
+        .item-card-title {
+            font-weight: 700;
+            font-size: 11px;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .item-card-price {
+            font-weight: 800;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            padding: 32px 0;
+            margin-top: 48px;
+            font-size: 11px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .footer-col h6 {
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 6px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="/ChatGPT.png" width="30px" height="30px" BorrowBox
+            </div>
+            <div class="search-pill">
+                <i class="fa-solid fa-location-dot"></i> Marietta, GA
+                <span style="border-right: 1px solid #cbd5e1; height: 12px; margin: 0 4px;"></span>
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">How it Works</a></li>
+                <li><a href="#">Trust & Safety</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="#" class="btn-list-item">List Gear</a>
+                <i class="fa-regular fa-bell" style="font-size: 16px;"></i>
+                <i class="fa-regular fa-circle-user" style="font-size: 18px;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="#">Home</a> &gt; 
+            <a href="#">Kitchen & Culinary</a> &gt; 
+            <a href="#">Appliances & Cookware Sub Suites</a> &gt; 
+            <span>Breville Barista Touch Impress & Artisan Culinary Appliance Suite</span>
+        </div>
+
+        <!-- Product Header Meta -->
+        <div class="product-meta-tags">
+            <span style="font-size: 11px; font-weight: 700;"><i class="fa-solid fa-star" style="color: var(--star-gold);"></i> 4.98 • 10 reviews</span>
+            <span class="badge badge-green">VERIFIED HOST</span>
+            <span class="badge badge-outline">SANCTIONED & CLEANED BEFORE DELIVERY</span>
+            <span style="font-size: 10px; color: var(--text-muted);">Inspection Completed: 2d ago</span>
+        </div>
+
+        <!-- Product Title & Share Actions -->
+        <div class="product-title-row">
+            <h1 class="product-title">Breville Barista Touch Impress & Artisan Culinary Appliance Suite</h1>
+            <div class="action-buttons">
+                <span><i class="fa-solid fa-share-nodes"></i> Share</span>
+                <span><i class="fa-regular fa-heart"></i> Save</span>
+            </div>
+        </div>
+        <div class="host-sub-info">
+            <i class="fa-solid fa-location-dot"></i> East Cobb, Marietta, GA • 1.8 miles away • Instant Reservation
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item-main">
+                <span class="gallery-tag">TOP RATED CULINARY APPLIANCE</span>
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80" alt="Breville Barista Touch Impress">
+                <div class="photo-caption">Breville Barista Touch Impress Pro Suite</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1589396575653-c09c794ff6a6?w=300&auto=format&fit=crop&q=80" alt="Coffee Pour">
+                <div class="photo-caption">Precision Espresso & Steam Wand</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1578643463396-0997cb5328c1?w=300&auto=format&fit=crop&q=80" alt="KitchenAid Mixer">
+                <div class="photo-caption">KitchenAid Pro 7-Qt Mixer</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=300&auto=format&fit=crop&q=80" alt="Espresso Prep">
+                <div class="photo-caption">Bakery Grade Recipe Prep Station</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=300&auto=format&fit=crop&q=80" alt="Spices and Tools">
+                <button class="btn-view-all"><i class="fa-solid fa-grid-2"></i> View All 14 Photos</button>
+            </div>
+        </div>
+
+        <!-- Main Content & Sidebar -->
+        <div class="main-layout">
+            
+            <!-- Left Side Details -->
+            <div class="left-col">
+                
+                <!-- Host Box -->
+                <div class="host-card">
+                    <div class="host-profile">
+                        <div class="avatar">CV</div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 12px;">Hosted by Chef Julian & Maya V. <span class="badge badge-green" style="font-size: 8px;">PREMIUM CULINARY HOST</span></div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Hosting commercial kitchen gear since 2019 • 100% Response Rate • Superhost 12x • Top Tier Culinary Collection</div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;"><i class="fa-solid fa-shield"></i> Clean Gear Guarantee: Equipment sanitized to restaurant standards prior to pickup.</div>
+                        </div>
+                    </div>
+                    <button style="border: 1px solid var(--border-color); background: #fff; border-radius: 6px; padding: 6px 10px; font-weight: 700; font-size: 10px;">MESSAGE HOST</button>
+                </div>
+
+                <!-- Specifications -->
+                <div class="specs-grid">
+                    <div class="spec-box">
+                        <div class="label">POWER / HEATING</div>
+                        <div class="value">1800W / ThermoJet 3s</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="label">PUMP PRESSURE</div>
+                        <div class="value">Espresso Bar • 15 Bar Italian</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="label">SANITATION STANDARD</div>
+                        <div class="value">Commercial Descaled</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="label">PICKUP / DELIVERY</div>
+                        <div class="value">Pickup or Delivery</div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div style="margin-bottom: 24px;">
+                    <h3 class="section-title">About this culinary appliance suite</h3>
+                    <p class="description-text">
+                        Elevate your residential or popup kitchen, commercial food prep photoshoot, wedding dessert preparation, or specialty coffee bar staging with this commercial-grade Breville Barista Touch Impress & Artisan Suite. Ideal for heavy culinary demo events, boutique catering, web video shoots, and culinary masterclass setups that call for high-end professional kitchen equipment.
+                    </p>
+                    <p class="description-text">
+                        The Breville Barista Touch Impress features real-time barista guidance—guiding step by step through espresso dose dosing, assisted 10kg tamping, micro-foam auto texturing, and custom thermo-jet heating with 3-second heat-up time. Paired alongside the heavy-duty KitchenAid Commercial-Grade 7-Quart Stand Mixer, this suite handles heavy breads, delicate pastry batters, dough kneading, and high-speed whipping without hesitation.
+                    </p>
+                    <p class="description-text">
+                        Every appliance comes clean, fully descaled with food-grade sanitization, and packed inside custom heavy-duty foam cases for easy transportation and safe transport.
+                    </p>
+                </div>
+
+                <!-- Included Items -->
+                <div style="margin-bottom: 24px;">
+                    <h3 class="section-title">Included with every culinary suite rental:</h3>
+                    <div class="included-grid">
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Breville Barista Touch Impress</strong> (Precision conical burr grinder with 30 precise grind settings)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>KitchenAid 7-Qt Pro Line Stand Mixer</strong> (Includes flat beater, wire whip, spiral dough hook & pouring shield)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Complete Barista Tooling</strong> (Stainless portafilter, precision dosing funnel, knock box, steel milk frothing pitcher)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Starter Artisan Coffee Kit</strong> (2 bags locally roasted espresso beans, scale & calibrator)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Hard-Shell Travel & Flight Foam Cases</strong> (Custom padded interior for shock protection during transport)</div>
+                        </div>
+                        <div class="included-item">
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>Quick Start Guide & QR Tutorial</strong> (Access to instructional walkthrough videos & quick setup manual)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insurance Banner -->
+                <div class="guarantee-banner">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div style="font-weight: 800; font-size: 13px;">BorrowBox $10,000 Culinary Equipment Guarantee <span class="badge badge-green" style="font-size: 8px;">INCLUDED</span></div>
+                        <div style="font-size: 11px; opacity: 0.85;">Protects commercial kitchen appliances and includes accidental breakdown coverage. Host and Renter are covered 100% by the standard protection guarantee.</div>
+                    </div>
+                </div>
+
+                <!-- Location / Radius -->
+                <div>
+                    <h3 class="section-title">Pickup Location & Delivery Radius</h3>
+                    <div class="map-card">
+                        <div class="map-visual">
+                            <div class="map-pin"><i class="fa-solid fa-utensils"></i></div>
+                        </div>
+                        <div style="font-size: 11px;">
+                            <strong>East Cobb / Johnson Ferry Corridor, Marietta, GA</strong>
+                            <p style="color: var(--text-muted); font-size: 10px;">Exact pickup address provided upon booking confirmation. Local delivery available to Marietta, Roswell, Sandy Springs & Alpharetta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ratings and Reviews -->
+                <div>
+                    <div class="review-rating-summary">
+                        <span class="rating-num">4.98</span>
+                        <div>
+                            <div class="stars-row"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Based on 10 verified event rentals</div>
+                        </div>
+                    </div>
+
+                    <div class="rating-bars-grid">
+                        <div class="rating-bar-line"><span>Rental Convenience</span> <strong>5.0</strong></div>
+                        <div class="rating-bar-line"><span>Appliance Condition</span> <strong>5.0</strong></div>
+                        <div class="rating-bar-line"><span>Host Communication</span> <strong>5.0</strong></div>
+                        <div class="rating-bar-line"><span>Overall Value</span> <strong>4.9</strong></div>
+                    </div>
+
+                    <!-- User Review -->
+                    <div class="user-review">
+                        <div class="user-review-header">
+                            <div class="avatar" style="background-color: #a855f7;">S</div>
+                            <div>
+                                <strong style="font-size: 11px;">Sarah B.</strong>
+                                <span style="font-size: 10px; color: var(--text-muted);">• Renting for Pop-Up Espresso Bar</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 11px;">"Rented this set for a 50-person morning catering pop-up in East Cobb. The Breville Barista Touch was immaculate, calibrated, and the custom transit case made loading into the truck so easy. The included 7-Qt Mixer was a lifesaver for making huge batches of fresh scones on site. Highest recommendation!"</p>
+                    </div>
+
+                    <div class="user-review">
+                        <div class="user-review-header">
+                            <div class="avatar" style="background-color: #f97316;">C</div>
+                            <div>
+                                <strong style="font-size: 11px;">Chef Marcus T.</strong>
+                                <span style="font-size: 10px; color: var(--text-muted);">• Renting for Commercial Video Production</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 11px;">"Flawless equipment, pristine condition for video closeups. Julian was super helpful with setup advice. Having the flight case for all the accessories was ultra helpful."</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Side Booking Box -->
+            <div class="right-col">
+                <div class="booking-widget">
+                    <div class="widget-price-head">
+                        $38.00 <span>/ day</span>
+                        <span style="float: right; font-size: 10px; background: #fef08a; padding: 2px 6px; border-radius: 4px; font-weight: 700; color: #854d0e;">Weekly Rate: $215/wk</span>
+                    </div>
+
+                    <div class="fulfillment-toggle">
+                        <button class="fulfillment-btn active">Local Pickup (Free)</button>
+                        <button class="fulfillment-btn">White Glove Delivery (+$35.00)</button>
+                    </div>
+
+                    <div class="date-picker-grid">
+                        <div class="date-box">
+                            <div class="lbl">RENTAL START DATE</div>
+                            <div><strong>05/12/2026</strong></div>
+                        </div>
+                        <div class="date-box" style="border-left: 1px solid var(--border-color); padding-left: 8px;">
+                            <div class="lbl">RETURN DATE</div>
+                            <div><strong>05/15/2026</strong></div>
+                        </div>
+                    </div>
+                    <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 12px; text-align: right;">
+                        <strong>3 Days (Weekend Loan)</strong> <a href="#" style="color: var(--primary-teal-dark);">Change</a>
+                    </div>
+
+                    <div style="font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">
+                        PROTECTION & ADD-ON SERVICES
+                    </div>
+
+                    <div class="checkbox-options">
+                        <div class="checkbox-row">
+                            <input type="checkbox" checked id="acc-damage">
+                            <label for="acc-damage">
+                                <strong>Accidental Damage & Component Waiver</strong> +$9.50
+                                <div style="color: var(--text-muted); font-size: 9.5px;">Covers accidental drops, component failures & dynamic pressure system issue</div>
+                            </label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="barista-kit">
+                            <label for="barista-kit">
+                                <strong>Heavy Boiler & Deluxe Coffee Bar</strong> +$5.00
+                                <div style="color: var(--text-muted); font-size: 9.5px;">Additional artisan espresso syrups, extra knockbox & ceramic tasting cups</div>
+                            </label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="syrup-station">
+                            <label for="syrup-station">
+                                <strong>Pro Espresso Syrup & Cold Brew Tower</strong> +$10.00
+                                <div style="color: var(--text-muted); font-size: 9.5px;">Slow drip cold brew glass tower + syrups for commercial beverage menu</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pricing-summary">
+                        <div class="price-line">
+                            <span>$38.00 x 3 Days</span>
+                            <span>$114.00</span>
+                        </div>
+                        <div class="price-line">
+                            <span>Accidental Damage Waiver Insurance</span>
+                            <span>$9.50</span>
+                        </div>
+                        <div class="price-line">
+                            <span>Sanitation & Prep Clean Fee</span>
+                            <span>$10.00</span>
+                        </div>
+                        <div class="price-line">
+                            <span>BorrowBox Community Service Fee</span>
+                            <span>$5.00</span>
+                        </div>
+                        <div class="price-line total">
+                            <span>Estimated Total (USD)</span>
+                            <span>$138.50</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-reserve"><i class="fa-solid fa-bolt"></i> Request Reservation</button>
+
+                    <div style="margin-top: 10px; font-size: 10px; color: var(--text-muted); text-align: center;">
+                        <div><i class="fa-solid fa-lock"></i> Food contact safe & certified clean guarantee</div>
+                        <div><i class="fa-solid fa-rotate-left"></i> Free cancellation up to 48 hours before loan</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Similar Items -->
+        <div class="similar-section">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="section-title">Similar culinary & kitchen equipment nearby</h3>
+                <a href="#" style="font-size: 11px; font-weight: 700; color: var(--primary-teal-dark); text-decoration: none;">View all kitchen gear in Marietta &rarr;</a>
+            </div>
+
+            <div class="similar-grid">
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&auto=format&fit=crop&q=80" alt="Pizza Oven">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">Kitchen Outdoor</div>
+                        <div class="item-card-title">Commercial Gas Ooni Koda 16 Outdoor</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">East Cobb • 2.1 miles away</div>
+                        <div class="item-card-price">$35 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=300&auto=format&fit=crop&q=80" alt="Vitamix">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">High-Power Blending</div>
+                        <div class="item-card-title">Vitamix Professional Series 750 - A</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">Downtown Marietta • 2.4 miles away</div>
+                        <div class="item-card-price">$22 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1588652179859-001096fa5a5f?w=300&auto=format&fit=crop&q=80" alt="Sous Vide">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">Precision Cooker</div>
+                        <div class="item-card-title">Anova Precision Immersion Circulator Pro</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">Smyrna • 4.1 miles away</div>
+                        <div class="item-card-price">$16 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300&auto=format&fit=crop&q=80" alt="Meat Slicer">
+                    <div class="item-card-content">
+                        <div class="badge badge-outline" style="font-size: 8px;">Food Prep</div>
+                        <div class="item-card-title">Berkel Red Line Manual Slicer & Cleaver</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">Roswell • 5.0 miles away</div>
+                        <div class="item-card-price">$45 <span style="font-size: 9px; font-weight: normal;">/ day</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 8px;">
+                    <i class="fa-solid fa-box-archive"></i> BorrowBox
+                </div>
+                <p style="color: var(--text-muted);">A trusted peer-to-peer equipment loan network. Rent premium culinary tools, camera gear, and specialized equipment directly from local verified hosts.</p>
+            </div>
+            <div class="footer-col">
+                <h6>NEIGHBORHOOD</h6>
+                <ul>
+                    <li><a href="#">Explore Equipment</a></li>
+                    <li><a href="#">Culinary Collections</a></li>
+                    <li><a href="#">Host Verification</a></li>
+                    <li><a href="#">Sanitization Standards</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h6>LENDERS & HOSTS</h6>
+                <ul>
+                    <li><a href="#">Post Your Gear</a></li>
+                    <li><a href="#">Company Guarantee</a></li>
+                    <li><a href="#">Lender Guidelines</a></li>
+                    <li><a href="#">Host Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h6>CONNECT & SUPPORT</h6>
+                <ul>
+                    <li><a href="#">Community Rules</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Support Chat</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

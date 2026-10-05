@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Web - Ambika Nagar, Kalol</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark-header: #0b1120;
+            --map-bg: #e5e3df;
+            --blue-primary: #1a73e8;
+            --blue-header-card: #2563eb;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --border-light: #e5e7eb;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark-header);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Header Bar */
+        .top-bar {
+            background-color: #0d1527;
+            color: #ffffff;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            font-size: 12px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .top-bar-left .title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .location-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            color: #94a3b8;
+        }
+
+        .device-selector {
+            display: flex;
+            background: #1e293b;
+            border-radius: 6px;
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .device-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 4px 10px;
+            font-size: 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .device-btn.active {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #10b981;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+        }
+
+        /* Main View Container */
+        .main-container {
+            flex: 1;
+            position: relative;
+            background-color: var(--map-bg);
+            overflow: hidden;
+        }
+
+        /* Map Canvas Background (Simulated SVG/CSS Map) */
+        .map-canvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #e8ecef;
+            overflow: hidden;
+        }
+
+        .map-road-orange {
+            position: absolute;
+            top: 0;
+            left: 30%;
+            width: 500px;
+            height: 600px;
+            border-left: 12px solid #fcd34d;
+            transform: rotate(-35deg);
+        }
+
+        .map-road-main {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 600px;
+            height: 800px;
+            border-left: 16px solid #ffffff;
+            transform: rotate(25deg);
+        }
+
+        .map-route-dash {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            width: 2px;
+            height: 450px;
+            border-left: 3px dashed #64748b;
+            transform: rotate(12deg);
+        }
+
+        .map-green-zone {
+            position: absolute;
+            top: 45%;
+            left: 45%;
+            width: 120px;
+            height: 100px;
+            background-color: #d1fae5;
+            border-radius: 50%;
+            filter: blur(8px);
+            opacity: 0.7;
+        }
+
+        /* Map Pins */
+        .map-pin {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 10;
+        }
+
+        .map-pin-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .pin-orange { background-color: #f97316; }
+        .pin-red { background-color: #ef4444; }
+
+        .map-pin-label {
+            background: #ffffff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+            color: #1e293b;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+            line-height: 1.1;
+        }
+
+        .map-pin-label span {
+            display: block;
+            font-size: 7px;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        /* Search & Filter Top Bar Overlay */
+        .search-overlay {
+            position: absolute;
+            top: 12px;
+            left: 280px;
+            right: 120px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 6px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            max-width: 420px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .search-box i {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .search-avatar {
+            width: 24px;
+            height: 24px;
+            background-color: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .category-pills {
+            display: flex;
+            gap: 6px;
+        }
+
+        .pill {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .pill i {
+            font-size: 12px;
+            color: #ef4444;
+        }
+
+        /* Left Side Panel */
+        .side-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+            background: #ffffff;
+            z-index: 30;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* Blue Header Card in Panel */
+        .panel-blue-card {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: #ffffff;
+            padding: 20px 16px 16px 16px;
+            position: relative;
+        }
+
+        .panel-subtitle {
+            font-size: 9px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .panel-district {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        /* Panel Info Body */
+        .panel-body {
+            padding: 14px 16px;
+            flex: 1;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            margin-bottom: 16px;
+        }
+
+        .rating-score {
+            font-weight: 700;
+            color: #f59e0b;
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 10px;
+        }
+
+        .review-count {
+            color: var(--text-muted);
+            font-size: 10px;
+        }
+
+        .weather-badge {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* Action Buttons Grid */
+        .action-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue-primary);
+            font-size: 12px;
+            background: #ffffff;
+        }
+
+        .action-icon.active {
+            background-color: var(--blue-primary);
+            color: #ffffff;
+            border: none;
+        }
+
+        .action-label {
+            font-size: 10px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Section Landmark List */
+        .section-heading {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .landmark-card {
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+            background: #ffffff;
+        }
+
+        .landmark-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .landmark-info {
+            flex: 1;
+        }
+
+        .landmark-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .open-tag {
+            font-size: 8px;
+            color: #10b981;
+            background: #ecfdf5;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .landmark-desc {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .landmark-meta {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Location Details List */
+        .location-details-list {
+            margin-top: 14px;
+            border-top: 1px solid var(--border-light);
+            padding-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .detail-item i {
+            margin-top: 2px;
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        /* Right Map Controls Bar */
+        .map-controls {
+            position: absolute;
+            right: 16px;
+            top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        .control-btn {
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--card-shadow);
+            color: #4b5563;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .control-btn.compass {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .control-btn.navigation {
+            background-color: #0d9488;
+            color: white;
+            border-radius: 8px;
+            height: 36px;
+        }
+
+        /* Bottom Floating Bar / Footer Overlay */
+        .bottom-bar-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 16px;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .bottom-card-info {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 8px 14px;
+            box-shadow: var(--card-shadow);
+            pointer-events: auto;
+            margin-left: 310px;
+        }
+
+        .bottom-card-info h4 {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .bottom-card-info p {
+            font-size: 9px;
+            color: var(--text-muted);
+        }
+
+        .bottom-nav-tabs {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 4px 12px;
+            display: flex;
+            gap: 24px;
+            box-shadow: var(--card-shadow);
+            pointer-events: auto;
+        }
+
+        .nav-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            font-size: 9px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .nav-tab.active {
+            color: #0d9488;
+            font-weight: 700;
+        }
+
+        .weather-widget-bottom {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            box-shadow: var(--card-shadow);
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <div class="title">
+                <i class="fa-solid fa-location-dot" style="color: #ef4444;"></i> Google Maps Web
+            </div>
+            <span class="location-tag">Ambika Nagar & Kalol View</span>
+        </div>
+
+        <div class="device-selector">
+            <button class="device-btn active"><i class="fa-solid fa-desktop"></i> Desktop</button>
+            <button class="device-btn"><i class="fa-solid fa-tablet-screen-button"></i> Tablet</button>
+            <button class="device-btn"><i class="fa-solid fa-mobile-screen"></i> Mobile (390px)</button>
+        </div>
+
+        <div class="top-bar-right">
+            <span class="status-dot"></span> Live GPS Active
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Left Side Information Panel -->
+        <div class="side-panel">
+            <div class="panel-blue-card">
+                <div class="panel-subtitle">NEIGHBORHOOD & HEALTHCARE</div>
+                <div class="panel-title">Ambika Nagar, Kalol</div>
+                <div class="panel-district">Gandhinagar District, Gujarat 382721</div>
+            </div>
+
+            <div class="panel-body">
+                <!-- Rating Row -->
+                <div class="rating-row">
+                    <span class="rating-score">4.4</span>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <span class="review-count">(1,248 reviews)</span>
+
+                    <div class="weather-badge">
+                        <i class="fa-solid fa-sun" style="color: #f59e0b;"></i> 34° <span style="font-size: 7px; color: var(--text-muted);">NAQI 74</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons Grid -->
+                <div class="action-buttons-grid">
+                    <div class="action-btn">
+                        <div class="action-icon active"><i class="fa-solid fa-diamond-turn-right"></i></div>
+                        <span class="action-label">Directions</span>
+                    </div>
+                    <div class="action-btn">
+                        <div class="action-icon"><i class="fa-regular fa-bookmark"></i></div>
+                        <span class="action-label">Save</span>
+                    </div>
+                    <div class="action-btn">
+                        <div class="action-icon"><i class="fa-solid fa-compass"></i></div>
+                        <span class="action-label">Nearby</span>
+                    </div>
+                    <div class="action-btn">
+                        <div class="action-icon"><i class="fa-regular fa-paper-plane"></i></div>
+                        <span class="action-label">Send</span>
+                    </div>
+                </div>
+
+                <!-- Major Landmarks Section -->
+                <div class="section-heading">MAJOR LANDMARKS IN VICINITY</div>
+
+                <!-- Landmark 1 -->
+                <div class="landmark-card">
+                    <div class="landmark-icon" style="background-color: #ef4444;">
+                        <i class="fa-solid fa-wave-square"></i>
+                    </div>
+                    <div class="landmark-info">
+                        <div class="landmark-name">
+                            PSM Hospital Kalol
+                            <span class="open-tag">Open 24/7</span>
+                        </div>
+                        <div class="landmark-desc">Multispecialty Healthcare & Trauma Center</div>
+                        <div class="landmark-meta"><i class="fa-solid fa-star" style="color: #f59e0b;"></i> 4.4 (860+ ratings) • 0.2 km from Ambika Nagar</div>
+                    </div>
+                </div>
+
+                <!-- Landmark 2 -->
+                <div class="landmark-card">
+                    <div class="landmark-icon" style="background-color: #f97316;">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="landmark-info">
+                        <div class="landmark-name">
+                            Gir Kathiyawadi Kalol
+                        </div>
+                        <div class="landmark-desc">Authentic Kathiyawadi & Gujarati Thali</div>
+                        <div class="landmark-meta"><i class="fa-solid fa-star" style="color: #f59e0b;"></i> 4.2 (412) • ₹200–400 per person</div>
+                    </div>
+                </div>
+
+                <!-- Details List -->
+                <div class="location-details-list">
+                    <div class="detail-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Near Kalol GIDC, National Highway, Gujarat 382721</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Peak traffic hours: 5:30 PM - 7:45 PM (Moderate)</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-train"></i>
+                        <span>Kalol Junction Railway Station (~1.8 km)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Overlay -->
+        <div class="search-overlay">
+            <div class="search-box">
+                <i class="fa-solid fa-location-dot" style="color: #ef4444;"></i>
+                <input type="text" value="Ambika Nagar, Kalol" readonly>
+                <i class="fa-solid fa-microphone"></i>
+                <i class="fa-solid fa-camera"></i>
+                <div class="search-avatar">D</div>
+            </div>
+
+            <div class="category-pills">
+                <div class="pill"><i class="fa-solid fa-sparkles" style="color: #3b82f6;"></i> Ask Maps</div>
+                <div class="pill"><i class="fa-solid fa-house" style="color: #64748b;"></i> Home • 54 min</div>
+                <div class="pill"><i class="fa-solid fa-utensils" style="color: #f97316;"></i> Restaurants</div>
+                <div class="pill"><i class="fa-solid fa-gas-pump" style="color: #64748b;"></i> Gas</div>
+                <div class="pill"><i class="fa-solid fa-hospital" style="color: #ef4444;"></i> Hospitals</div>
+            </div>
+        </div>
+
+        <!-- Simulated Map Area -->
+        <div class="map-canvas">
+            <div class="map-road-orange"></div>
+            <div class="map-road-main"></div>
+            <div class="map-route-dash"></div>
+            <div class="map-green-zone"></div>
+
+            <!-- Map Pin 1: Restaurant -->
+            <div class="map-pin" style="top: 53%; left: 47%;">
+                <div class="map-pin-icon pin-orange"><i class="fa-solid fa-utensils"></i></div>
+                <div class="map-pin-label">
+                    GIR KATHIYAWADI
+                    <span>KALOL</span>
+                </div>
+            </div>
+
+            <!-- Map Pin 2: Hospital -->
+            <div class="map-pin" style="top: 58%; left: 55%;">
+                <div class="map-pin-label" style="text-align: right;">
+                    PSM HOSPITAL
+                    <span style="color: #ef4444;">H-H-H-H-H</span>
+                </div>
+                <div class="map-pin-icon pin-red"><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+
+        <!-- Map Controls Sidebar -->
+        <div class="map-controls">
+            <button class="control-btn"><i class="fa-solid fa-layer-group"></i></button>
+            <button class="control-btn compass"><i class="fa-solid fa-location-arrow"></i></button>
+            <button class="control-btn"><strong style="font-size: 10px;">3D</strong></button>
+            <button class="control-btn"><i class="fa-solid fa-crosshairs"></i></button>
+            <button class="control-btn navigation"><i class="fa-solid fa-location-arrow"></i></button>
+        </div>
+
+        <!-- Bottom Overlay Bar -->
+        <div class="bottom-bar-overlay">
+            <div class="bottom-card-info">
+                <h4>Ambika Nagar</h4>
+                <p>Kalol, Gujarat</p>
+            </div>
+
+            <div class="bottom-nav-tabs">
+                <div class="nav-tab active">
+                    <i class="fa-solid fa-compass" style="font-size: 14px;"></i>
+                    <span>Explore</span>
+                </div>
+                <div class="nav-tab">
+                    <i class="fa-regular fa-bookmark" style="font-size: 14px;"></i>
+                    <span>You</span>
+                </div>
+                <div class="nav-tab">
+                    <i class="fa-regular fa-circle-plus" style="font-size: 14px;"></i>
+                    <span>Contribute</span>
+                </div>
+            </div>
+
+            <div class="weather-widget-bottom">
+                <i class="fa-solid fa-sun" style="color: #f59e0b;"></i>
+                <div>
+                    34°
+                    <div style="font-size: 7px; color: var(--text-muted); font-weight: normal;">NAQI</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
