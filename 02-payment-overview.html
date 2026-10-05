@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BorrowBox - Request Rental</title>
+  <style>
+    /* Reset default spacing */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f8f3;
+      color: #1c3829;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    /* Single Unified Card Container */
+    .single-card {
+      width: 100%;
+      max-width: 420px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e1ebe3;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      padding: 24px;
+    }
+
+    /* Product Preview Header Box */
+    .product-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .product-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid #d4e3d7;
+      background-color: #f8faf8;
+    }
+
+    /* Section 1: Header / Title Info */
+    .page-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #115e3b;
+      margin-bottom: 4px;
+    }
+
+    .item-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1c3829;
+    }
+
+    .item-price-info {
+      font-size: 13px;
+      color: #557763;
+      margin-top: 2px;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid #e1ebe3;
+      margin: 16px 0;
+    }
+
+    .dashed-divider {
+      border: 0;
+      border-top: 1px dashed #d4e3d7;
+      margin: 10px 0;
+    }
+
+    .section-heading {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1c3829;
+      margin-bottom: 10px;
+    }
+
+    /* Section 2: Rental Duration Buttons */
+    .duration-options {
+      display: flex;
+      gap: 8px;
+    }
+
+    .duration-btn {
+      flex: 1;
+      padding: 8px 0;
+      background-color: #f8faf8;
+      border: 1px solid #d4e3d7;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #335542;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .duration-btn.selected {
+      background-color: #115e3b;
+      color: #ffffff;
+      border-color: #115e3b;
+    }
+
+    /* Section 3: Rental Summary */
+    .summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #4a6b58;
+    }
+
+    .summary-row.total {
+      font-size: 15px;
+      font-weight: 800;
+      color: #115e3b;
+    }
+
+    .summary-value {
+      font-weight: 600;
+      color: #1c3829;
+    }
+
+    .total .summary-value {
+      color: #115e3b;
+      font-size: 16px;
+    }
+
+    /* Section 4: Payment Methods */
+    .payment-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid #d4e3d7;
+      border-radius: 10px;
+      background-color: #f8faf8;
+      cursor: pointer;
+    }
+
+    .payment-option.selected {
+      border-color: #115e3b;
+      background-color: #eaf5ee;
+    }
+
+    .payment-option input[type="radio"] {
+      accent-color: #115e3b;
+      width: 15px;
+      height: 15px;
+    }
+
+    .payment-icon {
+      font-size: 16px;
+    }
+
+    .payment-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1c3829;
+      display: block;
+    }
+
+    .payment-subtext {
+      font-size: 11px;
+      color: #557763;
+      display: block;
+    }
+
+    /* Section 5: QR Code Payment Area */
+    .qr-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f8faf8;
+      border: 1px solid #e1ebe3;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .qr-box {
+      width: 110px;
+      height: 110px;
+      border: 2px solid #115e3b;
+      border-radius: 10px;
+      position: relative;
+      margin: 8px 0;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 3px solid #115e3b;
+      border-radius: 3px;
+    }
+
+    .qr-corner.top-left { top: 6px; left: 6px; }
+    .qr-corner.top-right { top: 6px; right: 6px; }
+    .qr-corner.bottom-left { bottom: 6px; left: 6px; }
+
+    .qr-pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 8px);
+      gap: 6px;
+    }
+
+    .qr-pixel {
+      width: 8px;
+      height: 8px;
+      background-color: #115e3b;
+      border-radius: 1px;
+    }
+
+    .qr-pixel.empty {
+      background-color: transparent;
+    }
+
+    .qr-instructions {
+      font-size: 12px;
+      font-weight: 600;
+      color: #1c3829;
+      text-align: center;
+    }
+
+    .qr-apps {
+      font-size: 10px;
+      color: #688c75;
+      text-align: center;
+    }
+
+    /* Section 6: Footer Meta & Pay Button */
+    .rental-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .meta-rate {
+      font-size: 11px;
+      color: #557763;
+    }
+
+    .meta-return {
+      font-size: 11px;
+      font-weight: 700;
+      color: #115e3b;
+    }
+
+    .meta-total-amount {
+      font-size: 16px;
+      font-weight: 800;
+      color: #115e3b;
+    }
+
+    .pay-button {
+      width: 100%;
+      padding: 12px 0;
+      background-color: #115e3b;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(17, 94, 59, 0.2);
+    }
+
+    .pay-button:hover {
+      background-color: #0d4a2e;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SINGLE SECTION CARD -->
+  <div class="single-card">
+
+    <h1 class="page-title">Request Rental</h1>
+
+    <!-- Power Drill Image and Product Header -->
+    <div class="product-header">
+      <img 
+        src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=150&auto=format&fit=crop&q=80" 
+        alt="Power Drill" 
+        class="product-image"
+      >
+      <div>
+        <h2 class="item-name">Power Drill</h2>
+        <p class="item-price-info">₹150/day • Deposit ₹500</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Select Rental Duration -->
+    <div class="section-heading">Select Rental Duration</div>
+    <div class="duration-options">
+      <div class="duration-btn">1 day</div>
+      <div class="duration-btn selected">2 days</div>
+      <div class="duration-btn">3 days</div>
+      <div class="duration-btn">7 days</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Rental Summary -->
+    <div class="section-heading">Rental Summary</div>
+    <div class="summary-list">
+      <div class="summary-row">
+        <span>Price (₹150 × 2 days)</span>
+        <span class="summary-value">₹300</span>
+      </div>
+      <div class="summary-row">
+        <span>Deposit</span>
+        <span class="summary-value">₹500</span>
+      </div>
+      <hr class="dashed-divider">
+      <div class="summary-row total">
+        <span>Total Cost</span>
+        <span class="summary-value">₹800</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Payment Methods -->
+    <div class="section-heading">Payment Method</div>
+    <div class="payment-options">
+
+      <label class="payment-option selected">
+        <input type="radio" name="payment" checked>
+        <span class="payment-icon">📱</span>
+        <div>
+          <span class="payment-name">UPI</span>
+          <span class="payment-subtext">Google Pay, PhonePe, Paytm...</span>
+        </div>
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="payment">
+        <span class="payment-icon">💳</span>
+        <div>
+          <span class="payment-name">Card</span>
+          <span class="payment-subtext">Visa, Mastercard, Rupay</span>
+        </div>
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="payment">
+        <span class="payment-icon">👛</span>
+        <div>
+          <span class="payment-name">Wallet</span>
+          <span class="payment-subtext">Amazon Pay, Paytm Wallet</span>
+        </div>
+      </label>
+
+    </div>
+
+    <hr class="divider">
+
+    <!-- Scan & Pay QR Area -->
+    <div class="qr-area">
+      <div class="section-heading" style="margin-bottom: 0;">Scan & Pay</div>
+      
+      <div class="qr-box">
+        <div class="qr-corner top-left"></div>
+        <div class="qr-corner top-right"></div>
+        <div class="qr-corner bottom-left"></div>
+        <div class="qr-pattern-grid">
+          <div class="qr-pixel"></div>
+          <div class="qr-pixel"></div>
+          <div class="qr-pixel empty"></div>
+          <div class="qr-pixel"></div>
+          <div class="qr-pixel empty"></div>
+          <div class="qr-pixel"></div>
+          <div class="qr-pixel"></div>
+          <div class="qr-pixel empty"></div>
+          <div class="qr-pixel"></div>
+        </div>
+      </div>
+
+      <p class="qr-instructions">Scan the QR code using your UPI app</p>
+      <p class="qr-apps">Google Pay • PhonePe • Paytm</p>
+    </div>
+
+    <!-- Rental Meta Details -->
+    <div class="rental-meta">
+      <div>
+        <p class="meta-rate">₹150/day | Deposit ₹500</p>
+        <p class="meta-return">Return by Oct 7, 2025</p>
+      </div>
+      <div class="meta-total-amount">Total ₹800</div>
+    </div>
+
+    <!-- Main Payment Action Button -->
+    <button type="button" class="pay-button">Pay ₹800</button>
+
+  </div>
+
+</body>
+</html>
