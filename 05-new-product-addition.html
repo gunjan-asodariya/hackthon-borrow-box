@@ -5,24 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BorrowBox - Add New Product</title>
   <style>
-    /* ==================================================
-   1. COLOR SYSTEM & CSS VARIABLES
-   ================================================== */
-:root {
-  --primary-green: #2E7D32;       /* Main header & button green */
-  --dark-green: #1B5E20;          /* Hover state dark green */
-  --light-green: #E8F5E9;         /* Active sidebar & card tint */
-  --accent-orange: #FF7043;       /* Save & Publish accent button color */
-  --background-color: #F4F6F8;    /* Overall app greyish background */
-  --card-background: #FFFFFF;     /* Pure white card backgrounds */
-  --text-dark: #212121;           /* Main headings & text */
-  --text-gray: #757575;           /* Subtitles & placeholders */
-  --border-color: #E0E0E0;        /* Subtle divider borders */
-  --accent-yellow: #FFF8E1;       /* Light promo box background */
-}
-
 /* ==================================================
-   2. GLOBAL BASE STYLES
+   1. GLOBAL BASE STYLES
    ================================================== */
 * {
   box-sizing: border-box;
@@ -32,18 +16,18 @@
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-dark);
+  background-color: #F4F6F8;
+  color: #212121;
   line-height: 1.5;
 }
 
 /* ==================================================
-   3. HEADER STYLES
+   2. HEADER STYLES
    ================================================== */
 .header {
   height: 64px;
-  background-color: var(--card-background);
-  border-bottom: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E0E0E0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,19 +44,19 @@ body {
   gap: 8px;
   font-size: 20px;
   font-weight: 800;
-  color: var(--text-dark);
+  color: #212121;
 }
 
 .logo-highlight {
-  color: var(--primary-green);
+  color: #2E7D32;
 }
 
 /* Header Search Bar */
 .header-search {
   display: flex;
   align-items: center;
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
+  background-color: #F4F6F8;
+  border: 1px solid #E0E0E0;
   border-radius: 8px;
   padding: 6px 14px;
   width: 380px;
@@ -89,7 +73,7 @@ body {
   outline: none;
   width: 100%;
   font-size: 13px;
-  color: var(--text-dark);
+  color: #212121;
 }
 
 /* Profile Area */
@@ -108,7 +92,7 @@ body {
 .profile-avatar {
   width: 36px;
   height: 36px;
-  background-color: var(--primary-green);
+  background-color: #2E7D32;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -129,11 +113,11 @@ body {
 
 .profile-role {
   font-size: 11px;
-  color: var(--text-gray);
+  color: #757575;
 }
 
 /* ==================================================
-   4. LAYOUT CONTAINER (SIDEBAR + MAIN)
+   3. LAYOUT CONTAINER (SIDEBAR + MAIN)
    ================================================== */
 .dashboard-container {
   display: flex;
@@ -141,12 +125,12 @@ body {
 }
 
 /* ==================================================
-   5. SIDEBAR STYLES
+   4. SIDEBAR STYLES
    ================================================== */
 .sidebar {
   width: 220px;
-  background-color: var(--card-background);
-  border-right: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  border-right: 1px solid #E0E0E0;
   padding: 20px 12px;
   display: flex;
   flex-direction: column;
@@ -165,7 +149,7 @@ body {
   gap: 12px;
   padding: 10px 14px;
   text-decoration: none;
-  color: var(--text-gray);
+  color: #757575;
   font-size: 14px;
   font-weight: 600;
   border-radius: 8px;
@@ -173,19 +157,19 @@ body {
 }
 
 .nav-item:hover {
-  background-color: var(--background-color);
-  color: var(--text-dark);
+  background-color: #F4F6F8;
+  color: #212121;
 }
 
 /* Active Nav Item Highlighting */
 .nav-item.active {
-  background-color: var(--primary-green);
+  background-color: #2E7D32;
   color: #FFFFFF;
 }
 
 /* Promo Card inside Sidebar */
 .sidebar-promo {
-  background-color: var(--accent-yellow);
+  background-color: #FFF8E1;
   border: 1px solid #FFE082;
   border-radius: 8px;
   padding: 16px;
@@ -195,24 +179,24 @@ body {
 .promo-title {
   font-size: 13px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #212121;
 }
 
 .promo-subtitle {
   font-size: 12px;
-  color: var(--text-gray);
+  color: #757575;
 }
 
 .promo-brand {
   font-size: 11px;
   font-weight: 800;
-  color: var(--primary-green);
+  color: #2E7D32;
   margin-top: 8px;
   text-transform: uppercase;
 }
 
 /* ==================================================
-   6. MAIN CONTENT AREA STYLES
+   5. MAIN CONTENT AREA STYLES
    ================================================== */
 .main-content {
   flex: 1;
@@ -230,24 +214,24 @@ body {
 .page-title {
   font-size: 22px;
   font-weight: 800;
-  color: var(--text-dark);
+  color: #212121;
 }
 
 .page-subtitle {
   font-size: 13px;
-  color: var(--text-gray);
+  color: #757575;
   margin-top: 2px;
 }
 
 .back-link {
   font-size: 13px;
-  color: var(--primary-green);
+  color: #2E7D32;
   text-decoration: none;
   font-weight: 600;
 }
 
 /* ==================================================
-   7. FORM LAYOUT & CARDS
+   6. FORM LAYOUT & CARDS
    ================================================== */
 .product-form {
   display: flex;
@@ -276,8 +260,8 @@ body {
 }
 
 .card {
-  background-color: var(--card-background);
-  border: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.03);
@@ -286,7 +270,7 @@ body {
 .card-title {
   font-size: 15px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #212121;
   margin-bottom: 16px;
 }
 
@@ -302,7 +286,7 @@ body {
 }
 
 /* ==================================================
-   8. FORM INPUT ELEMENTS
+   7. FORM INPUT ELEMENTS
    ================================================== */
 .form-group {
   display: flex;
@@ -326,28 +310,28 @@ body {
 .form-label {
   font-size: 11px;
   font-weight: 700;
-  color: var(--text-gray);
+  color: #757575;
   letter-spacing: 0.5px;
 }
 
 .helper-tag {
   font-weight: normal;
-  color: var(--text-gray);
+  color: #757575;
 }
 
 .form-input, .form-select, .form-textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid var(--border-color);
+  border: 1px solid #E0E0E0;
   border-radius: 6px;
   font-size: 14px;
-  color: var(--text-dark);
+  color: #212121;
   outline: none;
   background-color: #FFFFFF;
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--primary-green);
+  border-color: #2E7D32;
 }
 
 .form-textarea {
@@ -356,14 +340,14 @@ body {
 
 .char-count {
   font-size: 11px;
-  color: var(--text-gray);
+  color: #757575;
   text-align: right;
   margin-top: 4px;
 }
 
 .helper-text {
   font-size: 11px;
-  color: var(--text-gray);
+  color: #757575;
   margin-top: 4px;
 }
 
@@ -378,7 +362,7 @@ body {
   position: absolute;
   left: 12px;
   font-weight: 600;
-  color: var(--text-gray);
+  color: #757575;
 }
 
 .currency-input-wrapper .form-input {
@@ -389,12 +373,12 @@ body {
   position: absolute;
   right: 12px;
   font-size: 12px;
-  color: var(--text-gray);
+  color: #757575;
   pointer-events: none;
 }
 
 /* ==================================================
-   9. PRODUCT IMAGE UPLOAD AREA
+   8. PRODUCT IMAGE UPLOAD AREA
    ================================================== */
 .upload-container {
   display: flex;
@@ -411,8 +395,8 @@ body {
 .main-image-placeholder {
   width: 140px;
   height: 140px;
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
+  background-color: #F4F6F8;
+  border: 1px solid #E0E0E0;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -432,8 +416,8 @@ body {
 .thumbnail {
   width: 40px;
   height: 40px;
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
+  background-color: #F4F6F8;
+  border: 1px solid #E0E0E0;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -442,12 +426,12 @@ body {
 }
 
 .active-thumb {
-  border-color: var(--primary-green);
-  background-color: var(--light-green);
+  border-color: #2E7D32;
+  background-color: #E8F5E9;
 }
 
 .upload-dropzone {
-  border: 2px dashed var(--border-color);
+  border: 2px dashed #E0E0E0;
   background-color: #FAFAFA;
   border-radius: 8px;
   padding: 20px;
@@ -464,31 +448,31 @@ body {
 .upload-main-text {
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-dark);
+  color: #212121;
 }
 
 .upload-sub-text {
   font-size: 11px;
-  color: var(--text-gray);
+  color: #757575;
 }
 
 /* Share Button */
 .btn-share {
   background: none;
-  border: 1px solid var(--border-color);
+  border: 1px solid #E0E0E0;
   padding: 4px 10px;
   border-radius: 4px;
   font-size: 12px;
-  color: var(--text-gray);
+  color: #757575;
   cursor: pointer;
 }
 
 /* ==================================================
-   10. SAVE & PUBLISH FOOTER BAR
+   9. SAVE & PUBLISH FOOTER BAR
    ================================================== */
 .form-footer-bar {
-  background-color: var(--card-background);
-  border: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
   border-radius: 10px;
   padding: 16px 20px;
   display: flex;
@@ -499,11 +483,11 @@ body {
 
 .footer-info-text {
   font-size: 13px;
-  color: var(--text-gray);
+  color: #757575;
 }
 
 .btn-publish {
-  background-color: var(--accent-orange);
+  background-color: #FF7043;
   color: #FFFFFF;
   border: none;
   padding: 10px 24px;
@@ -519,11 +503,11 @@ body {
 }
 
 /* ==================================================
-   11. RESPONSIVE DESIGN (MOBILE & TABLETS)
+   10. RESPONSIVE DESIGN (MOBILE & TABLETS)
    ================================================== */
 @media (max-width: 768px) {
   .header-search {
-    display: none; /* Hide search bar on small mobile screens */
+    display: none;
   }
 
   .dashboard-container {
@@ -533,7 +517,7 @@ body {
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #E0E0E0;
     padding: 12px;
   }
 
@@ -547,7 +531,7 @@ body {
   }
 
   .sidebar-promo {
-    display: none; /* Hide promotional card on mobile */
+    display: none;
   }
 
   .form-row {
@@ -565,26 +549,22 @@ body {
   }
 }
   </style>
-  <!-- Link to external stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Top Navigation Header -->
   <header class="header">
-    <!-- Brand Logo Area -->
     <div class="header-logo">
       <span class="logo-icon">📦</span>
       <span class="logo-text">Borrow<span class="logo-highlight">Box</span></span>
     </div>
 
-    <!-- Search Input Box -->
     <div class="header-search">
       <span class="search-icon">🔍</span>
       <input type="text" placeholder="Search products, orders, or anything...." class="search-input">
     </div>
 
-    <!-- Seller Profile Info -->
     <div class="header-profile">
       <span class="bell-icon">🔔</span>
       <div class="profile-avatar">S</div>
@@ -595,7 +575,7 @@ body {
     </div>
   </header>
 
-  <!-- Page Layout Wrapper (Sidebar + Main Content Area) -->
+  <!-- Page Layout Wrapper -->
   <div class="dashboard-container">
 
     <!-- Left Navigation Sidebar -->
@@ -624,7 +604,6 @@ body {
         </a>
       </nav>
 
-      <!-- Sidebar Promo Card -->
       <div class="sidebar-promo">
         <div class="promo-title">🌱 Your Products</div>
         <div class="promo-subtitle">Grow Together</div>
@@ -635,7 +614,6 @@ body {
     <!-- Main Content Panel -->
     <main class="main-content">
 
-      <!-- Page Title & Navigation Header -->
       <div class="page-title-header">
         <div>
           <h1 class="page-title">Add New Product</h1>
@@ -644,18 +622,14 @@ body {
         <a href="#" class="back-link">← Back to My Products</a>
       </div>
 
-      <!-- Form Grid Container -->
       <form class="product-form" onsubmit="event.preventDefault();">
 
         <!-- Left Form Column -->
         <div class="form-column">
 
-          <!-- Section 1: Product Image Upload -->
           <div class="card">
             <h2 class="card-title">1. Product Image</h2>
             <div class="upload-container">
-              
-              <!-- Main Image Preview with Thumbnails -->
               <div class="image-preview-area">
                 <div class="main-image-placeholder">
                   <span class="shoes-emoji">👟</span>
@@ -667,17 +641,14 @@ body {
                 </div>
               </div>
 
-              <!-- Upload Drag & Drop Box -->
               <div class="upload-dropzone">
                 <span class="upload-icon">☁️</span>
                 <p class="upload-main-text">Click to upload or drag and drop</p>
                 <p class="upload-sub-text">Supports JPG, PNG (Max 5MB)</p>
               </div>
-
             </div>
           </div>
 
-          <!-- Section 2: Product Details -->
           <div class="card">
             <h2 class="card-title">2. Product Details</h2>
             
@@ -709,7 +680,6 @@ body {
         <!-- Right Form Column -->
         <div class="form-column">
 
-          <!-- Section 3: Pricing -->
           <div class="card">
             <h2 class="card-title">3. Pricing</h2>
             <div class="form-row">
@@ -731,7 +701,6 @@ body {
             </div>
           </div>
 
-          <!-- Section 4: Stock / Quantity -->
           <div class="card">
             <h2 class="card-title">4. Stock / Quantity</h2>
             <div class="form-group">
@@ -743,7 +712,6 @@ body {
             </div>
           </div>
 
-          <!-- Section 5: Product Description -->
           <div class="card">
             <div class="card-header-row">
               <h2 class="card-title">5. Product Description</h2>
@@ -757,7 +725,6 @@ body {
             </div>
           </div>
 
-          <!-- Section 6: Delivery / Shipping Details -->
           <div class="card">
             <h2 class="card-title">6. Delivery / Shipping Details</h2>
             
@@ -792,7 +759,6 @@ body {
 
         </div>
 
-        <!-- Full-Width Save & Publish Section Footer -->
         <div class="form-footer-bar">
           <p class="footer-info-text">Your product will be visible to buyers once you click Save & Publish.</p>
           <button type="submit" class="btn-publish">Save & Publish</button>

@@ -5,35 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment Screen</title>
   <style>
-    /* =========================================================
-       COLOR THEME & VARIABLES
-       ========================================================= */
-    html {
-      /* Theme Base Colors */
-      --page-bg: #f2f4f7;          
-      --card-bg: #ffffff;          
-      --card-border: #e2e8f0;      
-      
-      /* Typography Colors */
-      --text-main: #0f172a;        
-      --text-sub: #64748b;         
-      --text-muted: #94a3b8;       
-      
-      /* Payment Option Box Theme */
-      --option-bg: #ffffff;        
-      --option-border: #e2e8f0;    
-      --option-selected-bg: #f8fafc;
-      --option-selected-border: #0f172a;
-      
-      /* QR Code Section Theme */
-      --qr-bg: #fafafa;            
-      --qr-border: #cbd5e1;        
-
-      /* Button Theme */
-      --btn-bg: #0f172a;           
-      --btn-text: #ffffff;         
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -42,7 +13,7 @@
     }
 
     body {
-      background-color: var(--page-bg);
+      background-color: #f2f4f7;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -53,10 +24,10 @@
     /* Outer Device Container */
     .device-container {
       width: 360px;
-      background-color: var(--card-bg);
+      background-color: #ffffff;
       border-radius: 30px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-      border: 1px solid var(--card-border);
+      border: 1px solid #e2e8f0;
       overflow: hidden;
       padding: 20px 18px;
     }
@@ -65,7 +36,7 @@
     .top-bar {
       font-size: 13px;
       font-weight: 600;
-      color: var(--text-main);
+      color: #0f172a;
       margin-bottom: 8px;
     }
 
@@ -73,7 +44,7 @@
     .page-title {
       font-size: 20px;
       font-weight: 700;
-      color: var(--text-main);
+      color: #0f172a;
       margin-bottom: 16px;
     }
 
@@ -96,10 +67,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 1px solid var(--option-border);
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
       padding: 12px 14px;
-      background-color: var(--option-bg);
+      background-color: #ffffff;
       cursor: pointer;
       transition: all 0.2s ease;
     }
@@ -114,8 +85,8 @@
     }
 
     .option-item:has(input[type="radio"]:checked) {
-      border-color: var(--option-selected-border);
-      background-color: var(--option-selected-bg);
+      border-color: #0f172a;
+      background-color: #f8fafc;
     }
 
     .option-left {
@@ -140,28 +111,28 @@
     .option-text h4 {
       font-size: 13px;
       font-weight: 600;
-      color: var(--text-main);
+      color: #0f172a;
       margin-bottom: 2px;
     }
 
     .option-text p {
       font-size: 11px;
-      color: var(--text-sub);
+      color: #64748b;
     }
 
     .chevron {
-      color: var(--text-muted);
+      color: #94a3b8;
       font-weight: 600;
       font-size: 16px;
     }
 
     /* QR Code Section */
     .qr-card {
-      border: 1.5px dashed var(--qr-border);
+      border: 1.5px dashed #cbd5e1;
       border-radius: 14px;
       padding: 16px;
       text-align: center;
-      background-color: var(--qr-bg);
+      background-color: #fafafa;
       margin-bottom: 18px;
     }
 
@@ -179,7 +150,7 @@
       margin: 0 auto 12px;
       padding: 8px;
       border-radius: 8px;
-      border: 1px solid var(--card-border);
+      border: 1px solid #e2e8f0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -237,9 +208,9 @@
 
     .summary-line.total-line {
       font-weight: 700;
-      color: var(--text-main);
+      color: #0f172a;
       font-size: 14px;
-      border-top: 1px dashed var(--qr-border);
+      border-top: 1px dashed #cbd5e1;
       padding-top: 8px;
       margin-top: 8px;
     }
@@ -247,8 +218,8 @@
     /* Pay Now CTA */
     .btn-pay {
       width: 100%;
-      background-color: var(--btn-bg);
-      color: var(--btn-text);
+      background-color: #0f172a;
+      color: #ffffff;
       border: none;
       padding: 14px;
       border-radius: 12px;
@@ -261,7 +232,7 @@
     .security-note {
       text-align: center;
       font-size: 11px;
-      color: var(--text-sub);
+      color: #64748b;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -374,7 +345,7 @@
         <div class="logo-item">
           <svg viewBox="0 0 100 40">
             <text x="0" y="28" font-size="28" font-family="Arial, sans-serif" font-weight="bold" fill="#4285F4">G</text>
-            <text x="24" y="28" font-size="22" font-family="'Segoe UI', sans-serif" font-weight="bold" fill="#EA4335">पे</text>
+            <text x="24" y="28" font-size="22" font-family="'Segoe UI', sans-serif" font-weight="bold" fill="#EA4335">પે</text>
           </svg>
           <span>Google Pay</span>
         </div>
@@ -420,7 +391,7 @@
       </div>
       <div class="summary-line total-line">
         <span>Total</span>
-        <span>₹800</span>
+        <span>₹1000</span>
       </div>
     </div>
 
